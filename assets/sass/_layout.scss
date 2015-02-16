@@ -1,0 +1,326 @@
+
+/* Table of Content
+==================================================
+
+
+
+/* Header Styles
+================================================== */
+header{
+	&.home{
+		height: 800px;
+		background: url("assets/img/home-header-bg.png") no-repeat -555px 0;		
+	}
+	&.interior{
+		height: 600px;
+		background: url("assets/img/page-header-bg.png") no-repeat 0px 0;
+		.interior-menu{
+			position: relative;
+			z-index: 5;
+		}
+	}
+	
+}
+
+.logo{
+	height: 125px;
+	padding-top: 45px;
+	.logo-block, .logo-name{display: inline;}
+	.logo-block{width: 122px; height:170px; }
+	a:hover{
+		@include opacity(1);
+	}
+}
+
+
+
+
+/* Navigation Styles
+================================================== */
+.main-navigation ul{
+	padding-top: 45px;
+	padding-left: 60px;
+	list-style-type: none;
+	width: 135px;
+	text-transform: uppercase;
+	margin: 0;
+ 
+	li{
+		position: relative;
+		padding: 0;
+		margin: 5px 0 2px 0;
+		a{
+			display: block;
+			overflow: auto; 
+			color: white;
+			text-decoration: none;
+			padding: 0 6px 0 6px;
+			font-weight: bold;
+
+			&:hover{
+				@include opacity(1);
+				color: $red;
+
+			}
+		}
+		a.hover{color: $red;}
+		&.current-menu-item{
+			background-color: $white;
+			a{
+				color: $black;
+			}
+		}
+	}
+	
+	li ul{
+		padding-top: 0;
+		position: absolute;
+		width: 155px;
+		top: 0;
+		left: 125px;
+		display:none;
+ 
+	}
+
+	li:hover ul{
+ 
+	}
+
+
+}
+ 
+ 
+
+
+/* Homepage Styles
+================================================== */
+
+.bg-container{ 
+	width: 100%;
+	height: 100%;
+	background:no-repeat center center fixed; 	
+	@include background-size(cover);
+	position:fixed; top:0px; left:0px;  overflow-y:hidden; overflow-x:hidden; margin:auto;
+	text-align: center;
+} 
+ 
+.bg-container:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; 
+}
+
+.centered {
+  display: inline-block;
+  vertical-align: middle;
+  width: 350px;
+}
+
+
+/* TEMP FILTER Styles
+================================================== */
+
+/** General page styling **/
+body {
+  background-color: #e5e5e5;
+  font-family: "Helvetica Neue Light", "Helvetica Neue", Arial, sans-serif;
+}
+
+header h1 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 200;
+  margin: 30px 0 10px 0;
+}
+
+header p {
+  text-align: center;
+  font-size: 14px;
+  color: #666666;
+  margin: 0;
+  font-weight: 200;
+}
+
+a {
+  text-decoration: none;
+}
+
+/**
+ * Progress bar for imagesLoaded
+ */
+.progress-bar {
+  background-color: #0BC20B;
+  height: 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 0;
+  -webkit-box-shadow: 0 1px 3px rgba(11, 194, 11, 0.2);
+     -moz-box-shadow: 0 1px 3px rgba(11, 194, 11, 0.2);
+          box-shadow: 0 1px 3px rgba(11, 194, 11, 0.2);
+  -webkit-transition: width 0.1s ease-out;
+     -moz-transition: width 0.1s ease-out;
+       -o-transition: width 0.1s ease-out;
+          transition: width 0.1s ease-out;
+}
+
+/**
+ * Placerholder css
+ */
+.wookmark-placeholder {
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+  background-color: #eee;
+  border: 1px solid #dedede;
+  z-index: -1;
+}
+
+/**
+ * Grid container
+ */
+.tiles-wrap {
+  position: relative; /** Needed to ensure items are laid out relative to this container **/
+  margin: 10px 0;
+  padding: 0;
+  list-style-type: none;
+  display: none;
+}
+
+
+/**
+ * Grid items
+ */
+.tiles-wrap li {
+  display: block;
+  opacity: 1;
+  text-align: center;
+  list-style-type: none;
+  background-color: #fff;
+  float: left;
+  cursor: pointer;
+  width: 200px;
+  padding: 4px;
+  border: 1px solid #dedede;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+}
+.tiles-wrap.animated li {
+  -webkit-transition: all 0.3s ease-out;
+     -moz-transition: all 0.3s ease-out;
+       -o-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;
+}
+
+.tiles-wrap li.wookmark-inactive {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.tiles-wrap li:hover {
+  background-color: #fafafa;
+}
+
+.tiles-wrap img {
+  display: block;
+}
+
+.tiles-wrap a {
+  color: #555;
+  text-align: center;
+  /* display: table-cell; */
+  width: 200px;
+  height: 200px;
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.tile-loading:after {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #ddd;
+  content: "Loading\2026";
+  padding-top: 20px;
+  color: #999;
+}
+
+/**
+ * Filters
+ */
+#filters {
+  list-style-type: none;
+  text-align: center;
+  margin: 0 5% 0 5%;
+}
+
+#filters:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+#filters li {
+  font-size: 12px;
+  float: left;
+  padding: 6px 8px 4px;
+  cursor: pointer;
+  margin: 0 10px;
+  -webkit-transition: all 0.15s ease-out;
+     -moz-transition: all 0.15s ease-out;
+       -o-transition: all 0.15s ease-out;
+          transition: all 0.15s ease-out;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
+#filters li:hover {
+  background: #4281f5;
+  color: #ffffff;
+}
+
+#filters li.active {
+  background: #4281f5;
+  color: #ffffff;
+}
+
+
+
+
+ 
+/* PAGE Slider
+================================================== */
+ 
+
+
+
+
+
+
+
+/* FOOTER Styles
+================================================== */
+
+ 
+ 
+
+
+ 
+
+
+ 

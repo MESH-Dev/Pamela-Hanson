@@ -1,0 +1,999 @@
+/*!
+Theme Name:  Pamela Hanson
+Theme URI: http://meshfresh.com
+Author: MESH Design and Development
+Author URI:  http://meshfresh.com
+Description:  Pamela Hanson Photography
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+/* #Reset  (Inspired by E. Meyers)
+================================================== */
+@import url("assets/libs/font-awesome-4.1.0/css/font-awesome.min.css");
+/* line 3, assets/sass/_reset.scss */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* line 10, assets/sass/_reset.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 12, assets/sass/_reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 14, assets/sass/_reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 16, assets/sass/_reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 19, assets/sass/_reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 22, assets/sass/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 1;
+}
+
+/* Table of Content
+==================================================
+	#Imports
+	#Variables
+	#Reset
+	#Basic Styles
+	#Images
+	#Buttons
+	#Tabs
+	#Forms
+	#Misc */
+/* COMPASS IMPORTS
+================================================= */
+/* VARIABLES
+================================================= */
+/*
+
+Provide variables for all colors and fonts. Examples:
+
+$red: #E31B23;
+$minion:"minion-pro";
+
+*/
+/* #Basic Styles
+================================================== */
+/* line 39, assets/sass/_base.scss */
+body {
+  height: 100%;
+}
+
+/* #Buttons
+================================================== */
+/* #Forms
+================================================== */
+/* #Forms
+================================================== */
+/* #Images
+================================================== */
+/* line 70, assets/sass/_base.scss */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* WordPress Image Styles
+   ========================================================================== */
+/* line 77, assets/sass/_base.scss */
+.alignnone {
+  margin: 5px 20px 20px 0;
+}
+
+/* line 78, assets/sass/_base.scss */
+.aligncenter, div.aligncenter {
+  display: block;
+  margin: 5px auto 5px auto;
+}
+
+/* line 79, assets/sass/_base.scss */
+.alignright {
+  float: right;
+  margin: 5px 0 20px 20px;
+}
+
+/* line 80, assets/sass/_base.scss */
+.alignleft {
+  float: left;
+  margin: 5px 20px 20px 0;
+}
+
+/* line 81, assets/sass/_base.scss */
+.aligncenter {
+  display: block;
+  margin: 5px auto 5px auto;
+}
+
+/* line 82, assets/sass/_base.scss */
+a img.alignright {
+  float: right;
+  margin: 5px 0 20px 20px;
+}
+
+/* line 83, assets/sass/_base.scss */
+a img.alignnone {
+  margin: 5px 20px 20px 0;
+}
+
+/* line 84, assets/sass/_base.scss */
+a img.alignleft {
+  float: left;
+  margin: 5px 20px 20px 0;
+}
+
+/* line 85, assets/sass/_base.scss */
+a img.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 86, assets/sass/_base.scss */
+.wp-caption {
+  background: #FFF;
+  max-width: 96%;
+  padding: 5px 3px 10px;
+  text-align: center;
+}
+
+/* line 87, assets/sass/_base.scss */
+.wp-caption.alignnone {
+  margin: 5px 20px 20px 0;
+}
+
+/* line 88, assets/sass/_base.scss */
+.wp-caption.alignleft {
+  margin: 5px 20px 20px 0;
+}
+
+/* line 89, assets/sass/_base.scss */
+.wp-caption.alignright {
+  margin: 5px 0 20px 20px;
+}
+
+/* line 90, assets/sass/_base.scss */
+.wp-caption img {
+  border: 0 none;
+  height: auto;
+  margin: 0;
+  max-width: 98.5%;
+  padding: 0;
+  width: auto;
+}
+
+/* line 91, assets/sass/_base.scss */
+.wp-caption p.wp-caption-text, .gallery-caption {
+  font-size: 11px;
+  line-height: 17px;
+  margin: 0;
+  padding: 0 4px 5px;
+}
+
+/* line 94, assets/sass/_base.scss */
+.add-bottom {
+  margin-bottom: 20px !important;
+}
+
+/* Tables
+================================================== */
+/* line 102, assets/sass/_base.scss */
+table {
+  width: 100%;
+  padding: 20px 0 20px 0;
+}
+/* line 105, assets/sass/_base.scss */
+table th {
+  padding: 8px 2px;
+  font-weight: bold;
+  font-size: 14px;
+  border-bottom: 2px solid black;
+  border-right: 30px solid #fff;
+  border-left: 30px solid #fff;
+  color: black;
+}
+/* line 115, assets/sass/_base.scss */
+table td {
+  padding: 12px 2px 0px 2px;
+  border-right: 30px solid #fff;
+  border-left: 30px solid #fff;
+  color: black;
+}
+
+/* Imported Fonts
+================================================== */
+/* line 5, assets/sass/_typography.scss */
+div {
+  font-family: "Apercu Regular", Calibri, sans-serif;
+  font-size-adjust: 0.508;
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 6, assets/sass/_typography.scss */
+div {
+  font-family: "Apercu Bold", Calibri, sans-serif;
+  font-size-adjust: 0.508;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* #Typography
+================================================== */
+/* line 13, assets/sass/_typography.scss */
+html, body {
+  font-family: "Apercu Bold", Calibri, sans-serif;
+  font-size-adjust: 0.508;
+  font-weight: bold;
+  font-style: normal;
+  color: black;
+  -webkit-font-smoothing: antialiased;
+  /* Fix for webkit rendering */
+  font-size: 14px;
+  line-height: 1.357;
+  letter-spacing: 0.04em;
+}
+
+/* line 26, assets/sass/_typography.scss */
+h1 {
+  font-family: "Apercu Bold", Calibri, sans-serif;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 1.21;
+  color: black;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding-bottom: 19px;
+}
+
+/* line 37, assets/sass/_typography.scss */
+h2 {
+  font-family: "Apercu Bold", Calibri, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.3125;
+  color: black;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* line 46, assets/sass/_typography.scss */
+h3 {
+  font-family: "Apercu Bold", Calibri, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.3125;
+  color: black;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* line 55, assets/sass/_typography.scss */
+h4 {
+  font-family: "Apercu Bold", Calibri, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.357;
+  color: black;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* line 64, assets/sass/_typography.scss */
+h5 {
+  font-family: "Apercu Bold", Calibri, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.357;
+  color: black;
+  letter-spacing: 0.04em;
+}
+
+/* line 73, assets/sass/_typography.scss */
+h6 {
+  font-family: "Apercu Bold", Calibri, sans-serif;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 1.357;
+  color: black;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* line 85, assets/sass/_typography.scss */
+p {
+  margin: 0 0 19px 0;
+}
+
+/* line 86, assets/sass/_typography.scss */
+p img {
+  margin: 0;
+}
+
+/* line 89, assets/sass/_typography.scss */
+em {
+  font-style: italic;
+}
+
+/* line 90, assets/sass/_typography.scss */
+strong {
+  font-weight: bold;
+}
+
+/* line 94, assets/sass/_typography.scss */
+blockquote, blockquote p {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.3125;
+  color: black;
+  letter-spacing: 0.04em;
+  font-style: italic;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+/* #Links
+================================================== */
+/* line 112, assets/sass/_typography.scss */
+a {
+  color: #d1202f;
+  text-decoration: none;
+}
+
+/* line 113, assets/sass/_typography.scss */
+a:hover, a:focus {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+/* line 114, assets/sass/_typography.scss */
+p a, p a:visited {
+  color: #d1202f;
+}
+
+/* #Lists
+================================================== */
+/* line 119, assets/sass/_typography.scss */
+ul, ol {
+  margin-bottom: 0px;
+}
+
+/* line 120, assets/sass/_typography.scss */
+ul {
+  list-style: circle outside;
+}
+
+/* line 121, assets/sass/_typography.scss */
+ol {
+  list-style: decimal;
+}
+
+/* line 122, assets/sass/_typography.scss */
+ol, ul, ul.square, ul.circle, ul.disc {
+  margin-left: 30px;
+}
+
+/* line 123, assets/sass/_typography.scss */
+ul.square {
+  list-style: square outside;
+}
+
+/* line 124, assets/sass/_typography.scss */
+ul.circle {
+  list-style: circle outside;
+}
+
+/* line 125, assets/sass/_typography.scss */
+ul.disc {
+  list-style: disc outside;
+}
+
+/* line 127, assets/sass/_typography.scss */
+ul ul, ul ol,
+ol ol, ol ul {
+  margin: 0 0 0 20px;
+  font-size: 100%;
+}
+
+/* line 129, assets/sass/_typography.scss */
+ul ul li, ul ol li,
+ol ol li, ol ul li {
+  margin-bottom: 0px;
+}
+
+/* line 130, assets/sass/_typography.scss */
+li {
+  line-height: 21px;
+  margin-bottom: 0px;
+}
+
+/* Table of Contents
+==================================================
+    #Import Base Style 
+    #Variables & Mixins
+    #Base 960 Grid
+    #Tablet (Portrait)
+    #Mobile (Portrait)
+    #Mobile (Landscape)
+    #Clearing
+    #Import Custom Layout */
+/* #Variables & Mixins
+================================================== */
+/* #Base 960 Grid
+================================================== */
+/* line 54, assets/sass/_grid.scss */
+.container {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 100px;
+  width: 1020px;
+  /* Offsets */
+}
+/* line 57, assets/sass/_grid.scss */
+.container .row {
+  margin-bottom: 20px;
+}
+/* line 58, assets/sass/_grid.scss */
+.container .column, .container .columns {
+  float: left;
+  display: inline;
+  margin-left: 12.5px;
+  margin-right: 12.5px;
+  /* Base Grid */
+}
+/* line 64, assets/sass/_grid.scss */
+.container .column.alpha, .container .columns.alpha {
+  margin-left: 0;
+}
+/* line 65, assets/sass/_grid.scss */
+.container .column.omega, .container .columns.omega {
+  margin-right: 0;
+}
+/* line 68, assets/sass/_grid.scss */
+.container .column.one, .container .columns.one {
+  width: 60px;
+}
+/* line 69, assets/sass/_grid.scss */
+.container .column.two, .container .columns.two {
+  width: 145px;
+}
+/* line 70, assets/sass/_grid.scss */
+.container .column.three, .container .columns.three {
+  width: 230px;
+}
+/* line 71, assets/sass/_grid.scss */
+.container .column.four, .container .columns.four {
+  width: 315px;
+}
+/* line 72, assets/sass/_grid.scss */
+.container .column.five, .container .columns.five {
+  width: 400px;
+}
+/* line 73, assets/sass/_grid.scss */
+.container .column.six, .container .columns.six {
+  width: 485px;
+}
+/* line 74, assets/sass/_grid.scss */
+.container .column.seven, .container .columns.seven {
+  width: 570px;
+}
+/* line 75, assets/sass/_grid.scss */
+.container .column.eight, .container .columns.eight {
+  width: 655px;
+}
+/* line 76, assets/sass/_grid.scss */
+.container .column.nine, .container .columns.nine {
+  width: 740px;
+}
+/* line 77, assets/sass/_grid.scss */
+.container .column.ten, .container .columns.ten {
+  width: 825px;
+}
+/* line 78, assets/sass/_grid.scss */
+.container .column.eleven, .container .columns.eleven {
+  width: 910px;
+}
+/* line 79, assets/sass/_grid.scss */
+.container .column.twelve, .container .columns.twelve {
+  width: 995px;
+}
+/* line 80, assets/sass/_grid.scss */
+.container .column.thirteen, .container .columns.thirteen {
+  width: 1080px;
+}
+/* line 81, assets/sass/_grid.scss */
+.container .column.fourteen, .container .columns.fourteen {
+  width: 1165px;
+}
+/* line 82, assets/sass/_grid.scss */
+.container .column.fifteen, .container .columns.fifteen {
+  width: 1250px;
+}
+/* line 83, assets/sass/_grid.scss */
+.container .column.sixteen, .container .columns.sixteen {
+  width: 1335px;
+}
+/* line 85, assets/sass/_grid.scss */
+.container .column.one-third, .container .columns.one-third {
+  width: 315px;
+}
+/* line 86, assets/sass/_grid.scss */
+.container .column.two-thirds, .container .columns.two-thirds {
+  width: 655px;
+}
+/* line 90, assets/sass/_grid.scss */
+.container .column img, .container .columns img {
+  max-width: 100%;
+}
+/* line 93, assets/sass/_grid.scss */
+.container .offset-by-one {
+  padding-left: 85px;
+}
+/* line 94, assets/sass/_grid.scss */
+.container .offset-by-two {
+  padding-left: 170px;
+}
+/* line 95, assets/sass/_grid.scss */
+.container .offset-by-three {
+  padding-left: 255px;
+}
+/* line 96, assets/sass/_grid.scss */
+.container .offset-by-four {
+  padding-left: 340px;
+}
+/* line 97, assets/sass/_grid.scss */
+.container .offset-by-five {
+  padding-left: 425px;
+}
+/* line 98, assets/sass/_grid.scss */
+.container .offset-by-six {
+  padding-left: 510px;
+}
+/* line 99, assets/sass/_grid.scss */
+.container .offset-by-seven {
+  padding-left: 595px;
+}
+/* line 100, assets/sass/_grid.scss */
+.container .offset-by-eight {
+  padding-left: 680px;
+}
+/* line 101, assets/sass/_grid.scss */
+.container .offset-by-nine {
+  padding-left: 765px;
+}
+/* line 102, assets/sass/_grid.scss */
+.container .offset-by-ten {
+  padding-left: 850px;
+}
+/* line 103, assets/sass/_grid.scss */
+.container .offset-by-eleven {
+  padding-left: 935px;
+}
+/* line 104, assets/sass/_grid.scss */
+.container .offset-by-twelve {
+  padding-left: 1020px;
+}
+/* line 105, assets/sass/_grid.scss */
+.container .offset-by-thirteen {
+  padding-left: 1105px;
+}
+/* line 106, assets/sass/_grid.scss */
+.container .offset-by-fourteen {
+  padding-left: 1190px;
+}
+/* line 107, assets/sass/_grid.scss */
+.container .offset-by-fifteen {
+  padding-left: 1275px;
+}
+
+/* #Clearing
+================================================== */
+/* Self Clearing Goodness */
+/* line 115, assets/sass/_grid.scss */
+.container:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Use clearfix class on parent to clear nested columns,
+or wrap each row of columns in a <div class="row"> */
+/* line 122, assets/sass/_grid.scss */
+.clearfix:before,
+.clearfix:after,
+.row:before,
+.row:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* line 130, assets/sass/_grid.scss */
+.row:after,
+.clearfix:after {
+  clear: both;
+}
+
+/* line 133, assets/sass/_grid.scss */
+.row,
+.clearfix {
+  zoom: 1;
+}
+
+/* You can also use a <br class="clear" /> to clear columns */
+/* line 137, assets/sass/_grid.scss */
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* Table of Content
+==================================================
+
+
+
+/* Header Styles
+================================================== */
+/* line 10, assets/sass/_layout.scss */
+header.home {
+  height: 800px;
+  background: url("assets/img/home-header-bg.png") no-repeat -555px 0;
+}
+/* line 14, assets/sass/_layout.scss */
+header.interior {
+  height: 600px;
+  background: url("assets/img/page-header-bg.png") no-repeat 0px 0;
+}
+/* line 17, assets/sass/_layout.scss */
+header.interior .interior-menu {
+  position: relative;
+  z-index: 5;
+}
+
+/* line 25, assets/sass/_layout.scss */
+.logo {
+  height: 125px;
+  padding-top: 45px;
+}
+/* line 28, assets/sass/_layout.scss */
+.logo .logo-block, .logo .logo-name {
+  display: inline;
+}
+/* line 29, assets/sass/_layout.scss */
+.logo .logo-block {
+  width: 122px;
+  height: 170px;
+}
+/* line 30, assets/sass/_layout.scss */
+.logo a:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+/* Navigation Styles
+================================================== */
+/* line 40, assets/sass/_layout.scss */
+.main-navigation ul {
+  padding-top: 45px;
+  padding-left: 60px;
+  list-style-type: none;
+  width: 135px;
+  text-transform: uppercase;
+  margin: 0;
+}
+/* line 48, assets/sass/_layout.scss */
+.main-navigation ul li {
+  position: relative;
+  padding: 0;
+  margin: 5px 0 2px 0;
+}
+/* line 52, assets/sass/_layout.scss */
+.main-navigation ul li a {
+  display: block;
+  overflow: auto;
+  color: white;
+  text-decoration: none;
+  padding: 0 6px 0 6px;
+  font-weight: bold;
+}
+/* line 60, assets/sass/_layout.scss */
+.main-navigation ul li a:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+  color: #d1202f;
+}
+/* line 66, assets/sass/_layout.scss */
+.main-navigation ul li a.hover {
+  color: #d1202f;
+}
+/* line 67, assets/sass/_layout.scss */
+.main-navigation ul li.current-menu-item {
+  background-color: white;
+}
+/* line 69, assets/sass/_layout.scss */
+.main-navigation ul li.current-menu-item a {
+  color: black;
+}
+/* line 75, assets/sass/_layout.scss */
+.main-navigation ul li ul {
+  padding-top: 0;
+  position: absolute;
+  width: 155px;
+  top: 0;
+  left: 125px;
+  display: none;
+}
+
+/* Homepage Styles
+================================================== */
+/* line 98, assets/sass/_layout.scss */
+.bg-container {
+  width: 100%;
+  height: 100%;
+  background: no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  margin: auto;
+  text-align: center;
+}
+
+/* line 107, assets/sass/_layout.scss */
+.bg-container:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+
+/* line 115, assets/sass/_layout.scss */
+.centered {
+  display: inline-block;
+  vertical-align: middle;
+  width: 350px;
+}
+
+/* TEMP FILTER Styles
+================================================== */
+/** General page styling **/
+/* line 126, assets/sass/_layout.scss */
+body {
+  background-color: #e5e5e5;
+  font-family: "Helvetica Neue Light", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* line 131, assets/sass/_layout.scss */
+header h1 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 200;
+  margin: 30px 0 10px 0;
+}
+
+/* line 138, assets/sass/_layout.scss */
+header p {
+  text-align: center;
+  font-size: 14px;
+  color: #666666;
+  margin: 0;
+  font-weight: 200;
+}
+
+/* line 146, assets/sass/_layout.scss */
+a {
+  text-decoration: none;
+}
+
+/**
+ * Progress bar for imagesLoaded
+ */
+/* line 153, assets/sass/_layout.scss */
+.progress-bar {
+  background-color: #0BC20B;
+  height: 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 0;
+  -webkit-box-shadow: 0 1px 3px rgba(11, 194, 11, 0.2);
+  -moz-box-shadow: 0 1px 3px rgba(11, 194, 11, 0.2);
+  box-shadow: 0 1px 3px rgba(11, 194, 11, 0.2);
+  -webkit-transition: width 0.1s ease-out;
+  -moz-transition: width 0.1s ease-out;
+  -o-transition: width 0.1s ease-out;
+  transition: width 0.1s ease-out;
+}
+
+/**
+ * Placerholder css
+ */
+/* line 173, assets/sass/_layout.scss */
+.wookmark-placeholder {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #eee;
+  border: 1px solid #dedede;
+  z-index: -1;
+}
+
+/**
+ * Grid container
+ */
+/* line 185, assets/sass/_layout.scss */
+.tiles-wrap {
+  position: relative;
+  /** Needed to ensure items are laid out relative to this container **/
+  margin: 10px 0;
+  padding: 0;
+  list-style-type: none;
+  display: none;
+}
+
+/**
+ * Grid items
+ */
+/* line 197, assets/sass/_layout.scss */
+.tiles-wrap li {
+  display: block;
+  opacity: 1;
+  text-align: center;
+  list-style-type: none;
+  background-color: #fff;
+  float: left;
+  cursor: pointer;
+  width: 200px;
+  padding: 4px;
+  border: 1px solid #dedede;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+/* line 215, assets/sass/_layout.scss */
+.tiles-wrap.animated li {
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+/* line 222, assets/sass/_layout.scss */
+.tiles-wrap li.wookmark-inactive {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* line 227, assets/sass/_layout.scss */
+.tiles-wrap li:hover {
+  background-color: #fafafa;
+}
+
+/* line 231, assets/sass/_layout.scss */
+.tiles-wrap img {
+  display: block;
+}
+
+/* line 235, assets/sass/_layout.scss */
+.tiles-wrap a {
+  color: #555;
+  text-align: center;
+  /* display: table-cell; */
+  width: 200px;
+  height: 200px;
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* line 246, assets/sass/_layout.scss */
+.tile-loading:after {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #ddd;
+  content: "Loading\2026";
+  padding-top: 20px;
+  color: #999;
+}
+
+/**
+ * Filters
+ */
+/* line 262, assets/sass/_layout.scss */
+#filters {
+  list-style-type: none;
+  text-align: center;
+  margin: 0 5% 0 5%;
+}
+
+/* line 268, assets/sass/_layout.scss */
+#filters:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+/* line 277, assets/sass/_layout.scss */
+#filters li {
+  font-size: 12px;
+  float: left;
+  padding: 6px 8px 4px;
+  cursor: pointer;
+  margin: 0 10px;
+  -webkit-transition: all 0.15s ease-out;
+  -moz-transition: all 0.15s ease-out;
+  -o-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+/* line 292, assets/sass/_layout.scss */
+#filters li:hover {
+  background: #4281f5;
+  color: #ffffff;
+}
+
+/* line 297, assets/sass/_layout.scss */
+#filters li.active {
+  background: #4281f5;
+  color: #ffffff;
+}
+
+/* PAGE Slider
+================================================== */
+/* FOOTER Styles
+================================================== */

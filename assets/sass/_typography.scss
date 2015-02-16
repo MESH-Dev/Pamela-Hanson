@@ -1,0 +1,130 @@
+/* Imported Fonts
+================================================== */
+@import url('assets/libs/font-awesome-4.1.0/css/font-awesome.min.css');
+
+ div { font-family:"Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal; }
+div { font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal; }
+
+/* #Typography
+================================================== */
+
+	//base
+
+	html, body{
+		font-family:"Apercu Bold", Calibri, sans-serif; 
+		font-size-adjust:0.508; 
+		font-weight:bold; 
+		font-style:normal; 
+		color: $black;
+		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+		font-size: 14px;
+		line-height: 1.357;
+		letter-spacing: 0.04em;
+	}
+
+	//headings
+	h1 { 
+		font-family:"Apercu Bold", Calibri, sans-serif;  
+		font-weight: bold; 
+		font-size: 28px;
+		line-height: 1.21;
+		color: $black;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		padding-bottom: 19px;
+
+	}
+	h2 {
+		font-family:"Apercu Bold", Calibri, sans-serif; 
+		font-weight: bold; 
+		font-size: 16px;
+		line-height: 1.3125;
+		color: $black;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+	h3 {
+		font-family:"Apercu Bold", Calibri, sans-serif;  
+		font-weight: bold; 
+		font-size: 16px;
+		line-height: 1.3125;
+		color: $black;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+	h4 {
+		font-family:"Apercu Bold", Calibri, sans-serif; 
+		font-weight: bold; 
+		font-size: 14px;
+		line-height: 1.357;
+		color: $black;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+	h5 {
+		font-family:"Apercu Bold", Calibri, sans-serif; 
+		font-weight: bold; 
+		font-size: 14px;
+		line-height: 1.357;
+		color: $black;
+		letter-spacing: 0.04em;
+ 
+	}
+	h6{
+		font-family:"Apercu Bold", Calibri, sans-serif; 
+		font-weight: bold; 
+		font-size: 11px;
+		line-height: 1.357;
+		color: $black;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	} 
+ 
+
+	//paragraphs
+	p { margin: 0 0 19px 0; }
+	p img { margin: 0; }
+
+	//styles
+	em { font-style: italic; }
+	strong { font-weight: bold;  }
+
+
+	//blockquote
+	blockquote, blockquote p {	
+		font-weight: bold; 
+		font-size: 16px;
+		line-height: 1.3125;
+		color: $black;
+		letter-spacing: 0.04em;
+		font-style: italic;
+ 		padding-bottom: 0px;
+ 		margin-bottom: 0px;
+	}
+ 
+
+	//horizontal rule
+	hr {}
+
+
+/* #Links
+================================================== */
+	a {color: $red; text-decoration: none;}
+	a:hover, a:focus { @include opacity(0.7); text-decoration: none;}
+	p a, p a:visited {color: $red; }
+
+
+/* #Lists
+================================================== */
+	ul, ol { margin-bottom: 0px; }
+	ul { list-style: circle outside; }
+	ol { list-style: decimal; }
+	ol, ul, ul.square, ul.circle, ul.disc { margin-left: 30px; }
+	ul.square { list-style: square outside; }
+	ul.circle { list-style: circle outside; }
+	ul.disc { list-style: disc outside; }
+	ul ul, ul ol,
+	ol ol, ol ul { margin: 0 0 0 20px; font-size: 100%;  }
+	ul ul li, ul ol li,
+	ol ol li, ol ul li { margin-bottom: 0px; }
+	li { line-height: 21px; margin-bottom: 0px; }
