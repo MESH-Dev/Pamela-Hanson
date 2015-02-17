@@ -18,7 +18,7 @@ div { font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; fo
 		color: $black;
 		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
 		font-size: 14px;
-		line-height: 1.357;
+		line-height: 18px;
 		letter-spacing: 0.04em;
 	}
 
@@ -26,12 +26,12 @@ div { font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; fo
 	h1 { 
 		font-family:"Apercu Bold", Calibri, sans-serif;  
 		font-weight: bold; 
-		font-size: 28px;
+		font-size: 40px;
 		line-height: 1.21;
 		color: $black;
 		letter-spacing: 0.05em;
 		text-transform: uppercase;
-		padding-bottom: 19px;
+ 
 
 	}
 	h2 {
@@ -109,9 +109,9 @@ div { font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; fo
 
 /* #Links
 ================================================== */
-	a {color: $red; text-decoration: none;}
-	a:hover, a:focus { @include opacity(0.7); text-decoration: none;}
-	p a, p a:visited {color: $red; }
+	a {color: $black; text-decoration: underline;}
+	a:hover, a:focus { @include opacity(0.6); text-decoration: underline;}
+	p a, p a:visited {color: $black; }
 
 
 /* #Lists

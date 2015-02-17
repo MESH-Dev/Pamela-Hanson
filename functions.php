@@ -135,6 +135,73 @@ function get_breadcrumb() {
     }
     
 }
+
+
+add_action('wp_head','pluginname_ajaxurl');
+function pluginname_ajaxurl() {
+?>
+<script type="text/javascript">
+var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+</script>
+<?php
+}
+
+add_action('wp_ajax_get_photos', 'get_photos');
+add_action('wp_ajax_nopriv_get_photos', 'get_photos');
+
+function get_photos() {  
+
+
+    $last_count = $_POST['last_count'];
+
+    $published_posts = wp_count_posts('photography')->publish;
+    if($published_posts <= $last_count){
+        return 0;
+    }
+
+    $args = array(
+        'post_type' => 'photography',
+        'posts_per_page' => 10,
+        'offset' => $last_count
+
+    );
+
+    query_posts( $args );
+
+     
+    if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+     
+        <?php
+        $ctr = 0;
+        while(has_sub_field('photography'))
+        { 
+            $imageArray  = get_sub_field('photo');
+            $imageAlt = $imageArray['alt'];
+            $imageURL = $imageArray['sizes']['grid-photo'];
+            break;
+        }
+        $categories = get_the_category();
+        $separator = ',';
+        $cat_list = '';
+        foreach($categories as $category) {
+          $cat_list .= '"'.$category->slug.'"' . $separator;
+        }
+        $cat_list = trim($cat_list, $separator);
+        $link = get_permalink();
+        $title = get_the_title();
+        $id = get_the_ID();
+      
+
+        echo "<li data-filter-class='[".$cat_list."]'>";
+        echo "<a href='". $link ."'>";
+        echo "<img src='". $imageURL."' >";
+        echo "<span class='project-title'>". $id  ."</span>";
+        echo "</a></li>";
+
+       
+    endwhile; 
+    die();
+}
  
 
 ?>

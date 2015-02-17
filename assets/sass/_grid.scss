@@ -14,9 +14,10 @@
 
 /* #Variables & Mixins
 ================================================== */
-$sk-col-width:  60px;   //column width 
-$sk-col-gutter: 25px;   //column gutter size
+$sk-col-width:  60px;   //column width
+$sk-col-gutter: 20px;   //column gutter size
 $sk-col-count:  12;     //total column count
+$sk-tablet-col: 38px;   //column width for tablet portrait
  
 
 @mixin grid-width($col-width: $sk-col-width) {
@@ -33,7 +34,13 @@ $sk-col-count:  12;     //total column count
 
 @mixin column-offset($offset-size: 1, $col-width: $sk-col-width) {
     padding-left: ($col-width + $sk-col-gutter) * $offset-size;
-    
+    @include breakpoint(landscape) {
+        padding-left: 0px;
+    }
+
+    @include breakpoint(portrait) {
+        padding-left: 0px;
+    }
 }
 
 @mixin column-offset-no-gutter($offset-size: 1, $col-width: $sk-col-width) {
@@ -44,17 +51,36 @@ $sk-col-count:  12;     //total column count
     margin-left: ($col-width + $sk-col-gutter) * $offset-size;
 }
 
+/* #Breakpoint Mixins
+================================================== */
+
+@mixin breakpoint($point) {
+  @if $point == smallscreen {
+    @media only screen and (min-width: 768px) and (max-width: 959px){ @content; }
+  }
+  @else if $point == tablet  {
+    @media only screen and (max-width: 767px){ @content; }
+  }
+  @else if $point == landscape {
+    @media only screen and (min-width: 480px) and (max-width: 767px)  { @content; }
+  }
+  @else if $point == portrait{
+    @media only screen and (max-width: 479px) { @content; }
+  }
+}
+
  
+
 
 
 
 /* #Base 960 Grid
 ================================================== */
 
-    .container { position: relative; margin: 0; padding: 0 0 0 100px;
+    .container {                      position: relative; margin: 0 auto; padding: 0;
                                       @include grid-width();
 
-        .row                        { margin-bottom: 20px; }
+        .row                        { margin-bottom: 0px; }
         .column, .columns           { float: left;
                                       display: inline;
                                       margin-left: ($sk-col-gutter / 2);
@@ -108,6 +134,144 @@ $sk-col-count:  12;     //total column count
     } //.container
 
 
+/* #Tablet (Portrait)
+================================================== */
+
+    /* Note: Design for a width of 768px */
+
+    @media only screen and (min-width: 768px) and (max-width: 959px) {
+        .container {                      position: relative; margin: 0 auto; padding: 0;
+                                          @include grid-width($sk-tablet-col);
+
+            .row                        { margin-bottom: 20px; }
+            .column, .columns           {
+
+                /* Base Grid */
+                &.one                   { @include columns(1, $sk-tablet-col); }
+                &.two                   { @include columns(2, $sk-tablet-col); }
+                &.three                 { @include columns(3, $sk-tablet-col);}
+                &.four                  { @include columns(4, $sk-tablet-col); }
+                &.five                  { @include columns(5, $sk-tablet-col); }
+                &.six                   { @include columns(6, $sk-tablet-col); }
+                &.seven                 { @include columns(7, $sk-tablet-col); }
+                &.eight                 { @include columns(8, $sk-tablet-col); }
+                &.nine                  { @include columns(9, $sk-tablet-col); }
+                &.ten                   { @include columns(10, $sk-tablet-col); }
+                &.eleven                { @include columns(11, $sk-tablet-col); }
+                &.twelve                { @include columns(12, $sk-tablet-col); }
+                &.thirteen              { @include columns(13, $sk-tablet-col); }
+                &.fourteen              { @include columns(14, $sk-tablet-col); }
+                &.fifteen               { @include columns(15, $sk-tablet-col); }
+                &.sixteen               { @include columns(16, $sk-tablet-col); }
+
+                &.one-third             { @include grid-third-width(1, $sk-tablet-col); }
+                &.two-thirds            { @include grid-third-width(2, $sk-tablet-col); }
+
+            } //.column, columns
+
+            /* Offsets */
+            .offset-by-one               { @include column-offset(1, $sk-tablet-col); }
+            .offset-by-two               { @include column-offset(2, $sk-tablet-col); }
+            .offset-by-three             { @include column-offset(3, $sk-tablet-col); }
+            .offset-by-four              { @include column-offset(4, $sk-tablet-col); }
+            .offset-by-five              { @include column-offset(5, $sk-tablet-col); }
+            .offset-by-six               { @include column-offset(6, $sk-tablet-col); }
+            .offset-by-seven             { @include column-offset(7, $sk-tablet-col); }
+            .offset-by-eight             { @include column-offset(8, $sk-tablet-col); }
+            .offset-by-nine              { @include column-offset(9, $sk-tablet-col); }
+            .offset-by-ten               { @include column-offset(10, $sk-tablet-col); }
+            .offset-by-eleven            { @include column-offset(11, $sk-tablet-col); }
+            .offset-by-twelve            { @include column-offset(12, $sk-tablet-col); }
+            .offset-by-thirteen          { @include column-offset(13, $sk-tablet-col); }
+            .offset-by-fourteen          { @include column-offset(14, $sk-tablet-col); }
+            .offset-by-fifteen           { @include column-offset(15, $sk-tablet-col); }
+        } //.container
+    }
+
+
+/*  #Mobile (Portrait)
+================================================== */
+
+    /* Note: Design for a width of 320px */
+
+    @media only screen and (max-width: 767px) {
+        .container { width: 300px;
+
+            .columns, .column { margin-left: 0px;  margin-right: 0px;
+
+                &.one,
+                &.two,
+                &.three,
+                &.four,
+                &.five,
+                &.six,
+                &.seven,
+                &.eight,
+                &.nine,
+                &.ten,
+                &.eleven,
+                &.twelve,
+                &.thirteen,
+                &.fourteen,
+                &.fifteen,
+                &.sixteen,
+                &.one-third,
+                &.two-thirds { width: 300px; }
+
+                /* Offsets */
+                .offset-by-one,
+                .offset-by-two,
+                .offset-by-three,
+                .offset-by-four,
+                .offset-by-five,
+                .offset-by-six,
+                .offset-by-seven,
+                .offset-by-eight,
+                .offset-by-nine,
+                .offset-by-ten,
+                .offset-by-eleven,
+                .offset-by-twelve,
+                .offset-by-thirteen,
+                .offset-by-fourteen,
+                .offset-by-fifteen { padding-left: 0; }
+
+            } // .column, .columns
+        } // .container
+    }
+
+
+/* #Mobile (Landscape)
+================================================== */
+
+    /* Note: Design for a width of 480px */
+
+    @media only screen and (min-width: 480px) and (max-width: 767px) {
+        .container { width: 420px;
+
+            .columns, .column {margin-left: 0px;  margin-right: 0px;
+
+                &.one,
+                &.two,
+                &.three,
+                &.four,
+                &.five,
+                &.six,
+                &.seven,
+                &.eight,
+                &.nine,
+                &.ten,
+                &.eleven,
+                &.twelve,
+                &.thirteen,
+                &.fourteen,
+                &.fifteen,
+                &.sixteen,
+                &.one-third,
+                &.two-thirds { width: 420px; }
+
+            } // .column, .columns
+        } // .container
+    }
 /* #Clearing
 ================================================== */
 
