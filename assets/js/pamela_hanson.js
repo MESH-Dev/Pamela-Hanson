@@ -13,7 +13,16 @@ jQuery(document).ready(function($){
       }
   });
 
-
+  $('.slides-wrap').slick({
+    variableWidth: true,
+    accessibility: true,
+    adaptiveHeight: true,
+    arrows: true,
+    infinite: false,
+    slide: '.image-content',
+    prevArrow: '<div class="button slick-prev"><i class="fa fa-chevron-left"></i></div>',
+    nextArrow: '<div class="button slick-next"><i class="fa fa-chevron-right"></i></div>'
+  });
 
 });
 
@@ -177,6 +186,9 @@ jQuery(document).ready(function($){
   //$window.bind('scroll.wookmark', onScroll);
  
  
+
+
+
 
  
 

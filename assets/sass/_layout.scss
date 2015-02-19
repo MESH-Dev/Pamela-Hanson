@@ -252,6 +252,9 @@ header{
   cursor: pointer;
   text-transform: uppercase;
   margin: 0 20px 0 0;
+  a{
+    text-decoration: none;
+  }
 }
 
 #filters li:hover {
@@ -393,8 +396,59 @@ a#load-more-photos{
  
 /* PAGE Slider
 ================================================== */
- 
 
+ .slides{
+  width: 100%;
+  overflow-x: hidden;
+
+  .slides-wrap{
+    padding-bottom:0px !important;
+    margin-bottom: 0px !important;
+    overflow: visible;
+ 
+ 
+  }
+
+  .image-content img{
+    margin-right: 6px;
+    max-width: 100%;
+  }
+
+  div.button{
+    top: -350px;
+    position: relative;
+    background: transparent;
+    color: white;
+    font-size: 30px;
+    display: inline-block;
+    &.slick-next{
+      float:right;
+      right: 10px;
+      top: -380px;
+
+     }
+     &.slick-prev{
+ 
+      left: 10px;
+    }
+    &:hover{
+      cursor: pointer;
+      @include opacity(0.7);
+    }
+  }
+
+ }
+
+ .single-title, .single-info{
+  position: relative;
+  top: -30px;
+  text-transform: uppercase;
+ }
+
+ .single-info{
+  text-align: right;
+ }
+ 
 
 
 

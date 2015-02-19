@@ -4,7 +4,7 @@
 <div class="container">
   <div class="twelve columns filters">  
     <ol id="filters">
-      <li data-filter="all">> Work: </li>
+      <li data-filter="all"><i class="fa fa-caret-right"></i> Work: </li>
 
         <?php 
         $args = array(

@@ -4,6 +4,7 @@ function loadup_scripts() {
 
     wp_enqueue_script('imagesloaded-js', get_template_directory_uri().'/assets/libs/imagesloaded.pkgd.min.js','', null, true);
     wp_enqueue_script('wookmark-js', get_template_directory_uri().'/assets/libs/wookmark.js',array( 'jquery' ), null, true);
+    wp_enqueue_script('silppry-js', get_template_directory_uri().'/assets/libs/slick.js',array( 'jquery' ), null, true);
     wp_enqueue_script('theme-js', get_template_directory_uri().'/assets/js/pamela_hanson.js',array( 'jquery' ), null, true);
  
 }
@@ -16,6 +17,9 @@ add_image_size('medium', 250, '', true); // Medium Thumbnail
 add_image_size('small', 120, '', true); // Small Thumbnail
 add_image_size('home-bg', 1400, 900, true);
 add_image_size('grid-photo', 310, '', true);
+add_image_size('single-photo', 940, 9999, false);
+add_image_size('multiple-photos', 9999, 600);
+
 
 
 

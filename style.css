@@ -1511,14 +1511,18 @@ header .main-navigation ul li.current-menu-item a {
   text-transform: uppercase;
   margin: 0 20px 0 0;
 }
+/* line 255, assets/sass/_layout.scss */
+#filters li a {
+  text-decoration: none;
+}
 
-/* line 257, assets/sass/_layout.scss */
+/* line 260, assets/sass/_layout.scss */
 #filters li:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
 }
 
-/* line 261, assets/sass/_layout.scss */
+/* line 264, assets/sass/_layout.scss */
 #filters li.active {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
@@ -1527,7 +1531,7 @@ header .main-navigation ul li.current-menu-item a {
 /**
  * Progress bar for imagesLoaded
  */
-/* line 268, assets/sass/_layout.scss */
+/* line 271, assets/sass/_layout.scss */
 .progress-bar {
   background-color: #000;
   height: 3px;
@@ -1548,7 +1552,7 @@ header .main-navigation ul li.current-menu-item a {
 /**
  * Grid container
  */
-/* line 290, assets/sass/_layout.scss */
+/* line 293, assets/sass/_layout.scss */
 .tiles-wrap {
   position: relative;
   /** Needed to ensure items are laid out relative to this container **/
@@ -1561,7 +1565,7 @@ header .main-navigation ul li.current-menu-item a {
 /**
  * Grid items
  */
-/* line 302, assets/sass/_layout.scss */
+/* line 305, assets/sass/_layout.scss */
 .tiles-wrap li {
   display: block;
   opacity: 1;
@@ -1573,7 +1577,7 @@ header .main-navigation ul li.current-menu-item a {
   width: 310px;
 }
 
-/* line 314, assets/sass/_layout.scss */
+/* line 317, assets/sass/_layout.scss */
 .tiles-wrap.animated li {
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
@@ -1581,13 +1585,13 @@ header .main-navigation ul li.current-menu-item a {
   transition: all 0.3s ease-out;
 }
 
-/* line 321, assets/sass/_layout.scss */
+/* line 324, assets/sass/_layout.scss */
 .tiles-wrap li.wookmark-inactive {
   visibility: hidden;
   opacity: 0;
 }
 
-/* line 326, assets/sass/_layout.scss */
+/* line 329, assets/sass/_layout.scss */
 .tiles-wrap li span.project-title {
   font-size: 14px;
   font-weight: bold;
@@ -1602,34 +1606,34 @@ header .main-navigation ul li.current-menu-item a {
   display: none;
 }
 
-/* line 341, assets/sass/_layout.scss */
+/* line 344, assets/sass/_layout.scss */
 .tiles-wrap li:hover img {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3;
 }
-/* line 345, assets/sass/_layout.scss */
+/* line 348, assets/sass/_layout.scss */
 .tiles-wrap li:hover span.project-title {
   display: block;
 }
 
-/* line 351, assets/sass/_layout.scss */
+/* line 354, assets/sass/_layout.scss */
 .tiles-wrap img {
   display: block;
   margin: 0;
   vertical-align: middle;
 }
 
-/* line 356, assets/sass/_layout.scss */
+/* line 359, assets/sass/_layout.scss */
 .tiles-wrap li a {
   text-decoration: none;
 }
-/* line 358, assets/sass/_layout.scss */
+/* line 361, assets/sass/_layout.scss */
 .tiles-wrap li a:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
 
-/* line 363, assets/sass/_layout.scss */
+/* line 366, assets/sass/_layout.scss */
 .tile-loading:after {
   display: block;
   position: absolute;
@@ -1643,7 +1647,7 @@ header .main-navigation ul li.current-menu-item a {
   color: #999;
 }
 
-/* line 376, assets/sass/_layout.scss */
+/* line 379, assets/sass/_layout.scss */
 a#load-more-photos {
   display: block;
   position: relative;
@@ -1652,12 +1656,170 @@ a#load-more-photos {
   width: 300px;
   z-index: 9999999;
 }
-/* line 384, assets/sass/_layout.scss */
+/* line 387, assets/sass/_layout.scss */
 a#load-more-photos:hover {
   cursor: pointer;
 }
 
 /* PAGE Slider
 ================================================== */
+/* line 400, assets/sass/_layout.scss */
+.slides {
+  width: 100%;
+  overflow-x: hidden;
+}
+/* line 404, assets/sass/_layout.scss */
+.slides .slides-wrap {
+  padding-bottom: 0px !important;
+  margin-bottom: 0px !important;
+  overflow: visible;
+}
+/* line 412, assets/sass/_layout.scss */
+.slides .image-content img {
+  margin-right: 6px;
+  max-width: 100%;
+}
+/* line 417, assets/sass/_layout.scss */
+.slides div.button {
+  top: -350px;
+  position: relative;
+  background: transparent;
+  color: white;
+  font-size: 30px;
+  display: inline-block;
+}
+/* line 424, assets/sass/_layout.scss */
+.slides div.button.slick-next {
+  float: right;
+  right: 10px;
+  top: -380px;
+}
+/* line 430, assets/sass/_layout.scss */
+.slides div.button.slick-prev {
+  left: 10px;
+}
+/* line 434, assets/sass/_layout.scss */
+.slides div.button:hover {
+  cursor: pointer;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+}
+
+/* line 442, assets/sass/_layout.scss */
+.single-title, .single-info {
+  position: relative;
+  top: -30px;
+  text-transform: uppercase;
+}
+
+/* line 448, assets/sass/_layout.scss */
+.single-info {
+  text-align: right;
+}
+
 /* FOOTER Styles
 ================================================== */
+/* Slider */
+/* line 3, assets/sass/_slick.scss */
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* line 18, assets/sass/_slick.scss */
+.slick-list {
+  position: relative;
+  overflow: visible !important;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+/* line 25, assets/sass/_slick.scss */
+.slick-list:focus {
+  outline: none;
+}
+/* line 29, assets/sass/_slick.scss */
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+/* line 35, assets/sass/_slick.scss */
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+/* line 43, assets/sass/_slick.scss */
+.slick-track {
+  position: relative;
+  left: 0;
+  top: 0;
+  display: block;
+}
+/* line 50, assets/sass/_slick.scss */
+.slick-track:before, .slick-track:after {
+  content: "";
+  display: table;
+}
+/* line 55, assets/sass/_slick.scss */
+.slick-track:after {
+  clear: both;
+}
+/* line 59, assets/sass/_slick.scss */
+.slick-loading .slick-track {
+  visibility: visible;
+}
+
+/* line 63, assets/sass/_slick.scss */
+.slick-slide {
+  float: left;
+  height: 100%;
+  min-height: 1px;
+  display: none;
+}
+/* line 67, assets/sass/_slick.scss */
+[dir="rtl"] .slick-slide {
+  float: right;
+}
+/* line 70, assets/sass/_slick.scss */
+.slick-slide img {
+  display: block;
+}
+/* line 73, assets/sass/_slick.scss */
+.slick-slide.slick-loading img {
+  display: none;
+}
+/* line 79, assets/sass/_slick.scss */
+.slick-slide.dragging img {
+  pointer-events: none;
+}
+/* line 83, assets/sass/_slick.scss */
+.slick-initialized .slick-slide {
+  display: block;
+}
+/* line 87, assets/sass/_slick.scss */
+.slick-loading .slick-slide {
+  visibility: visible;
+}
+/* line 91, assets/sass/_slick.scss */
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent;
+}
