@@ -1717,6 +1717,44 @@ a#load-more-photos:hover {
   text-align: right;
 }
 
+/* PAGE Styles
+================================================== */
+/* line 456, assets/sass/_layout.scss */
+.page-bg-container {
+  width: 100%;
+  height: 100%;
+  background: no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  margin: auto;
+  z-index: -1;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+}
+
+/* line 466, assets/sass/_layout.scss */
+.page-content {
+  background-color: white;
+  padding: 20px 30px 20px 30px;
+  border: 5px solid black;
+  margin-bottom: 40px;
+}
+/* line 472, assets/sass/_layout.scss */
+.page-content h1 {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.04em;
+  padding-bottom: 19px;
+  margin-left: -11px;
+}
+
 /* FOOTER Styles
 ================================================== */
 /* Slider */
