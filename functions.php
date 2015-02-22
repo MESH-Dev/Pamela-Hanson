@@ -108,37 +108,7 @@ function my_custom_login_logo() {
     </style>';
 }
 
-
-function get_breadcrumb() {
-
-    global $post;
-
-    $trail = '';
-    $page_title = get_the_title($post->ID);
-
-    if($post->post_parent) {
-        $parent_id = $post->post_parent;
-
-        while ($parent_id) {
-            $page = get_page($parent_id);
-            $breadcrumbs[] = '<a href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a>  <i class="fa fa-caret-right"> </i>';
-            $parent_id = $page->post_parent;
-        }
-
-        $breadcrumbs = array_reverse($breadcrumbs);
-        foreach($breadcrumbs as $crumb) $trail .= $crumb;
-
-        $trail .= $page_title;
-        $trail .= '';
-
-        return $trail;  
-    }
-    else{
-         $trail .= '';
-        return $trail; 
-    }
-    
-}
+ 
 
 
 add_action('wp_head','pluginname_ajaxurl');
@@ -199,7 +169,7 @@ function get_photos() {
         echo "<li data-filter-class='[".$cat_list."]'>";
         echo "<a href='". $link ."'>";
         echo "<img src='". $imageURL."' >";
-        echo "<span class='project-title'>". $id  ."</span>";
+        echo "<span class='project-title'>". $title  ."</span>";
         echo "</a></li>";
 
        
