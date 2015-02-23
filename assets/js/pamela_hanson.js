@@ -24,6 +24,11 @@ jQuery(document).ready(function($){
     nextArrow: '<div class="button slick-next"><i class="fa fa-chevron-right"></i></div>'
   });
 
+  $('#home-logo').hover( function(){
+    $('ul#menu-main-navigation').addClass('show');
+  });
+
+
 });
 
  
@@ -123,21 +128,15 @@ jQuery(document).ready(function($){
 
 
 
-  //-----------------LOAD MORE SCROLL -------------------------------------------//
+  //-----------------LOAD MORE PHOTOS -------------------------------------------//
 
-  function onScroll() {
-    // Check if we're within 100 pixels of the bottom edge of the broser window.
-    var winHeight = window.innerHeight ? window.innerHeight : $window.height(), // iphone fix
-        closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
-    var is_loading = false;
-    if (closeToBottom) {
+  function loadPhotos() {
 
-      // Get the first then items from the grid, clone them, and add them to the bottom of the grid
-      //var $items = $('li', $container);
-       
-       if (is_loading == false) { 
+      var last_count = $( ".tiles-wrap li" ).length;
+      var is_loading = false;
+       if (is_loading == false) {
             is_loading = true;
-            var last_count = $( ".tiles-wrap li" ).length;
+            
 
             var data = {
                 action: 'get_photos',
@@ -148,7 +147,7 @@ jQuery(document).ready(function($){
                 //$('#loader').hide();
                 // append: add the new statments to the existing data
                 if(response != 0){
-                  console.log(response);
+       
                   $container.append(response);
                   $items = $('li', $container);
                   $lastTen = $items.slice(last_count, last_count+10).css('opacity', 0);
@@ -163,12 +162,12 @@ jQuery(document).ready(function($){
                   wookmark = new Wookmark('#container', {
                     itemWidth: 310 // Optional, the width of a grid item
                   });
-
-                  console.log(last_count);
-                  
-                  // set is_loading to false to accept new loading
-
                   is_loading = false;
+                  var new_count = $( ".tiles-wrap li" ).length;
+                  if(new_count%10 != 0){
+                    $('a#load-more-photos').hide();
+                  }
+
                 }
                 else{
                   $('a#load-more-photos').hide();
@@ -176,14 +175,62 @@ jQuery(document).ready(function($){
                 }
             });
         }    
- 
- 
-      
-    }
   }
-  // Capture scroll event.
-  $('a#load-more-photos').click(onScroll);
-  //$window.bind('scroll.wookmark', onScroll);
+ 
+  $('a#load-more-photos').click(loadPhotos);
+
+
+  //-----------------LOAD MORE VIDEO -------------------------------------------//
+
+  function loadVideos() {
+ 
+       var is_loading = false;
+       var last_count = $( ".tiles-wrap li" ).length;
+       if (is_loading == false) { 
+            is_loading = true;
+           
+
+            var data = {
+                action: 'get_videos',
+                last_count: last_count
+            };
+            jQuery.post(ajaxurl, data, function(response) {
+                // now we have the response, so hide the loader
+                //$('#loader').hide();
+                // append: add the new statments to the existing data
+                if(response != 0){
+                  $container.append(response);
+                  $items = $('li', $container);
+                  $lastTen = $items.slice(last_count, last_count+10).css('opacity', 0);
+                  wookmark.initItems();
+                  wookmark.layout(true, function () {
+                    // Fade in items after layout
+                    setTimeout(function() {
+                      $lastTen.css('opacity', 1);
+                    }, 300);
+                  });
+                  wookmark = new Wookmark('#container', {
+                    itemWidth: 310 // Optional, the width of a grid item
+                  });
+                  
+                  // set is_loading to false to accept new loading
+                  is_loading = false;
+                  var new_count = $( ".tiles-wrap li" ).length;
+                  if(new_count%10 != 0){
+                    $('a#load-more-videos').hide();
+                  }
+                }
+                else{
+                  $('a#load-more-videos').hide();
+                  is_loading = false;
+                }
+            });
+        }
+ 
+  }
+ 
+  $('a#load-more-videos').click(loadVideos);
+   
  
  
 

@@ -15,7 +15,7 @@
 
 <div class="bg-container" style="background-image: url(<?php echo $imageURL[$rand_pic]; ?>)">
 		<div class="centered <?php echo $text_color[$rand_pic]; ?>">
-		 	<h1>Pamela Hanson</h1>
+		 	<h1 id="home-logo">Pamela Hanson</h1>
 		 	<?php if(has_nav_menu('main_nav')){
 				$defaults = array(
 					'theme_location'  => 'main_nav',

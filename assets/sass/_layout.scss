@@ -10,6 +10,13 @@ header{
   .search{
     text-align: right;
     padding-top: 20px;
+    @include breakpoint(portrait){
+      padding-top: 10px;
+      margin-bottom: 20px;
+    }
+    @include breakpoint(tablet){
+      margin-bottom: 10px;
+    }
   }
   .logo{
     text-align: center;
@@ -32,6 +39,15 @@ header{
         list-style-type: none;
         text-transform: uppercase;
         margin: 0 30px 0 30px;
+ 
+ 
+        @include breakpoint(tablet){
+          margin: 0 5px 0 5px;
+        }
+        @include breakpoint(portrait){
+           display: block;
+           margin: 7px 0px 7px 0px;
+        }
 
 
         a{             
@@ -151,17 +167,62 @@ header{
 } 
 
 
+/* Homepage Styles
+================================================== */
 
+.bg-container{ 
+  width: 100%;
+  height: 100%;
+  background:no-repeat center center fixed;   
+  @include background-size(cover);
+  position:fixed; top:0px; left:0px;  overflow-y:hidden; overflow-x:hidden; margin:auto;
+  text-align: center;
+} 
+ 
+.bg-container:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; 
+}
+
+.centered {
+  display: inline-block;
+  vertical-align: middle;
+  width: 350px;
+
+  &.white{
+   h1{color: $white;}
+  }
+
+  h1{
+    transition: all  0.9s ease;
+    -webkit-transition: all  0.9s ease;
+    -moz-transition: all  0.9s ease;
+    -o-transition: all  0.9s ease;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+}
 
 /* Home Navigation Styles
 ================================================== */
 .centered ul#menu-main-navigation {
 	padding-top: 0px;
- 
+  @include opacity(0);
+   visibility: hidden;
+   height: 0;
 	list-style-type: none;
 	width: 350px;
 	text-transform: uppercase;
 	margin: 0;
+  transition: all  0.9s ease;
+  -webkit-transition: all  0.9s ease;
+  -moz-transition: all  0.9s ease;
+  -o-transition: all  0.9s ease;
  
 	li{
 		position: relative;
@@ -182,12 +243,15 @@ header{
 			text-decoration: none;
       width:100%;
 			padding: 0 0px 0 0px;
- 
 			font-weight: bold;
       text-align: center;
+      transition: all  0.2s ease;
+      -webkit-transition: all  0.2s ease;
+      -moz-transition: all  0.2s ease;
+      -o-transition: all  0.2s ease;
 
 			&:hover{
-    
+        background: url('assets/img/home-menu-bg-1.png') no-repeat 0 13px ;
         @include opacity(1);
 			}
 		}
@@ -195,35 +259,71 @@ header{
 	}
  
 }
- 
- 
 
-
-/* Homepage Styles
-================================================== */
-
-.bg-container{ 
-	width: 100%;
-	height: 100%;
-	background:no-repeat center center fixed; 	
-	@include background-size(cover);
-	position:fixed; top:0px; left:0px;  overflow-y:hidden; overflow-x:hidden; margin:auto;
-	text-align: center;
-} 
- 
-.bg-container:before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  margin-right: -0.25em; 
+.centered ul#menu-main-navigation.show{
+  visibility: visible;
+  @include opacity(1);
+  height: 200px;
+  transition: all  0.9s ease;
+  -webkit-transition: all  0.9s ease;
+  -moz-transition: all  0.9s ease;
+  -o-transition: all  0.9s ease;
 }
 
-.centered {
-  display: inline-block;
-  vertical-align: middle;
-  width: 350px;
+
+.centered.white ul#menu-main-navigation li a{
+  color: $white;
 }
+
+
+
+.centered ul#menu-main-navigation li:nth-child(1) a:hover{
+  background: url('assets/img/home-menu-bg-1.png') no-repeat 0 13px ;
+  @include opacity(1);
+}
+
+.centered.white ul#menu-main-navigation li:nth-child(1) a:hover{
+  background: url('assets/img/home-menu-bg-1-white.png') no-repeat 0 13px ;
+  @include opacity(1);
+}
+
+.centered ul#menu-main-navigation li:nth-child(2) a:hover{
+  background: url('assets/img/home-menu-bg-2.png') no-repeat 0 13px ;
+  @include opacity(1);
+}
+
+.centered.white ul#menu-main-navigation li:nth-child(2) a:hover{
+  background: url('assets/img/home-menu-bg-2-white.png') no-repeat 0 13px ;
+  @include opacity(1);
+}
+
+.centered ul#menu-main-navigation li:nth-child(3) a:hover{
+  background: url('assets/img/home-menu-bg-1.png') no-repeat 0 13px ;
+  @include opacity(1);
+}
+
+.centered.white ul#menu-main-navigation li:nth-child(3) a:hover{
+  background: url('assets/img/home-menu-bg-1-white.png') no-repeat 0 13px ;
+  @include opacity(1);
+}
+
+.centered ul#menu-main-navigation li:nth-child(4) a:hover{
+  background: url('assets/img/home-menu-bg-4.png') no-repeat 0 13px ;
+  @include opacity(1);
+}
+
+.centered.white ul#menu-main-navigation li:nth-child(4) a:hover{
+  background: url('assets/img/home-menu-bg-4-white.png') no-repeat 0 13px ;
+  @include opacity(1);
+}
+
+
+
+ 
+ 
+
+
+
 
 
 /* Archive Filter Page Styles
@@ -376,13 +476,13 @@ header{
   color: #999;
 }
 
-a#load-more-photos{
+a#load-more-photos, a#load-more-videos{
   display: block;
   position: relative; 
   margin: 0 auto; 
   padding: 20px 0 100px 0;
   width: 300px;
-  z-index: 9999999;
+  z-index: 99;
 
   &:hover{ cursor: pointer}
 }
@@ -397,21 +497,29 @@ a#load-more-photos{
 /* PAGE Slider
 ================================================== */
 
- .slides{
+.slides{
   width: 100%;
   overflow-x: hidden;
-
+ 
   .slides-wrap{
     padding-bottom:0px !important;
     margin-bottom: 0px !important;
     overflow: visible;
- 
- 
   }
 
   .image-content img{
     margin-right: 6px;
     max-width: 100%;
+    @include breakpoint(smallscreen){
+       max-width: 676px;
+    }
+    @include breakpoint(tablet){
+       max-width: 420px;
+    }
+    @include breakpoint(portrait){
+       max-width: 300px;
+    }
+
   }
 
   div.button{
@@ -421,15 +529,21 @@ a#load-more-photos{
     color: white;
     font-size: 30px;
     display: inline-block;
+
     &.slick-next{
       float:right;
       right: 10px;
       top: -380px;
+      @include breakpoint(portrait){
+         right:-10000px;
+      }
 
      }
      &.slick-prev{
- 
       left: 10px;
+      @include breakpoint(portrait){
+        left:-10000px;
+      }
     }
     &:hover{
       cursor: pointer;
@@ -437,17 +551,48 @@ a#load-more-photos{
     }
   }
 
- }
+} 
 
- .single-title, .single-info{
+.single-title, .single-info{
   position: relative;
   top: -30px;
   text-transform: uppercase;
- }
+  @include breakpoint(portrait){
+     top: -250px;
+  }
+}
 
- .single-info{
+.single-info, .single-video-info{
   text-align: right;
- }
+  @include breakpoint(tablet){
+    text-align: left; 
+  }
+  @include breakpoint(portrait){
+     text-align: left;    
+  }
+}
+
+.single-video-title, .single-video-info{
+  position: relative;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+iframe{
+  max-width: 100%;
+
+  @include breakpoint(smallscreen){
+      height: 380px;    
+  }
+  @include breakpoint(tablet){
+      height: 236px;    
+  }
+ 
+  @include breakpoint(portrait){
+      height: 168px;    
+  }
+
+}
  
 
 

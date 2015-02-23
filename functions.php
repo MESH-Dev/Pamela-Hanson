@@ -176,6 +176,52 @@ function get_photos() {
     endwhile; 
     die();
 }
+
+
+add_action('wp_ajax_get_videos', 'get_videos');
+add_action('wp_ajax_nopriv_get_videos', 'get_videos');
+function get_videos() {  
+
+
+    $last_count = $_POST['last_count'];
+
+    $published_posts = wp_count_posts('video')->publish;
+    if($published_posts <= $last_count){
+        return 0;
+    }
+
+    $args = array(
+        'post_type' => 'video',
+        'posts_per_page' => 10,
+        'offset' => $last_count
+
+    );
+
+    query_posts( $args );
+
+     
+    if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+     
+        <?php
+ 
+        $imageArray  = get_field('thumbnail_image');
+        $imageAlt = $imageArray['alt'];
+        $imageURL = $imageArray['sizes']['grid-photo'];
+        $link = get_permalink();
+        $title = get_the_title();
+
+ 
+        echo "<li>";
+        echo "  <a href=". $link .">";
+        echo "    <img src=".$imageURL. ">";
+        echo "      <span class='project-title'>". $title  ."</span>";
+        echo "  </a>";
+        echo "</li>";
+
+       
+    endwhile; 
+    die();
+}
  
 
 ?>

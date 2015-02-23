@@ -1,15 +1,10 @@
 <?php get_header(); ?>
 <?php get_header('interior'); ?>
-<?php
-
-global $wp_query;
-$s = $_GET['s'];
-?>
 
 <div class="container">
   <div class="twelve columns filters">  
     <ol id="filters">
-      <li data-filter="all"><i class="fa fa-caret-right"></i> Search Results: <?php echo get_search_query();?> </li>
+      <li data-filter="all"><i class="fa fa-caret-right"></i> Video </li>
  
     </ol>
   </div>
@@ -19,30 +14,13 @@ $s = $_GET['s'];
  <div role="main">
       <ul id="container" class="tiles-wrap animated">
         <?php
-
-        $args = array(
-			'post_type' => array( 'photography', 'video' ),
-			'posts_per_page' => '-1',
-		 	's' => $s,
-
-		);
-        query_posts($args);
+ 
+        query_posts($query_string . '&posts_per_page=10' );
       	
       	if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
  
       	<?php
-      		$post_type = get_post_type( get_the_ID() );
-      		if($post_type == 'video'){
-            	$imageArray  = get_field('thumbnail_image');
-            }
-            if($post_type == 'photography'){
-            	while(has_sub_field('photography'))
-		      	{ 
-		            $imageArray  = get_sub_field('photo');
-		      	    break;
-		      	}
-            }
-
+            $imageArray  = get_field('thumbnail_image');
       	    $imageAlt = $imageArray['alt'];
       	    $imageURL = $imageArray['sizes']['grid-photo'];
       	?>
@@ -60,7 +38,8 @@ $s = $_GET['s'];
 
  
     </ul>
- 
+
+    <a id="load-more-videos">LOAD MORE</a>
 </div>
 
 
