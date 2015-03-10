@@ -20,16 +20,65 @@ $s = $_GET['s'];
       <ul id="container" class="tiles-wrap animated">
         <?php
 
-        $args = array(
-			'post_type' => array( 'photography', 'video' ),
-			'posts_per_page' => '-1',
-		 	's' => $s,
-
-		);
-        query_posts($args);
-      	
-      	if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
  
+        $search_args = array(
+          'post_type' => array( 'photography', 'video' ),
+          'posts_per_page' => '-1',
+          's' => $s,
+        ); 
+        $search_posts = get_posts( $search_args );
+
+        $info_args = array(
+          'post_type' => array( 'photography', 'video' ),
+          'posts_per_page' => '-1',
+          'meta_query' => array(
+              array(
+                'key'     => 'project_information',
+                'value'   => $s,
+                'compare' => 'LIKE',
+              )
+            )
+        );
+        $info_posts = get_posts( $info_args ); 
+
+        $cat_args = array(
+          'post_type' => array( 'photography', 'video' ),
+          'posts_per_page' => '-1',
+          'tax_query' => array(
+              array(
+                'taxonomy' => 'category',
+                'field'    => 'slug',
+                'terms'    => $s,
+              )
+            )
+        );
+        $cat_posts = get_posts( $cat_args );
+
+
+        $postids = array();
+        $merged_posts = array_merge($search_posts, $info_posts, $cat_posts );
+
+        foreach( $merged_posts as $item ) {
+          $postids[]=$item->ID; //create a new query only of the post ids
+        }
+        $uniqueposts = array_unique($postids); //remove duplicate post ids
+
+        $posts = get_posts(array(
+          'post__in' => $uniqueposts, //new query of only the unique post ids on the merged queries from above
+          'post_type' => array( 'photography', 'video' ),
+          'post_status' => 'publish',
+          'posts_per_page' => '-1'
+        ));
+
+ 
+
+ 
+        //$the_query = new WP_Query( $args );
+      	
+      	//if ($the_query->have_posts() ) while ( $the_query->have_posts() ) : $the_query->the_post(); 
+        foreach ($posts as $post ) : 
+          setup_postdata( $post ); 
+        ?>
       	<?php
       		$post_type = get_post_type( get_the_ID() );
       		if($post_type == 'video'){
@@ -55,7 +104,9 @@ $s = $_GET['s'];
        
 
        	<?php   
-      	endwhile; 
+      	//endwhile;
+        endforeach;
+        wp_reset_postdata(); 
        	?>
 
  
