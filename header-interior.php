@@ -36,7 +36,7 @@
 									'link_before'     => '',
 									'link_after'      => '',
 									'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-									'depth'           => 1,
+									'depth'           => 2,
 									'walker'          => ''
 								); wp_nav_menu( $defaults );
 							}else{

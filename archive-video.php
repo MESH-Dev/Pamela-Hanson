@@ -15,7 +15,7 @@
       <ul id="container" class="tiles-wrap animated">
         <?php
  
-        query_posts($query_string . '&posts_per_page=10' );
+        query_posts($query_string . '&posts_per_page=-1' );
       	
       	if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
  

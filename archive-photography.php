@@ -26,7 +26,7 @@
       <ul id="container" class="tiles-wrap animated">
         <?php
  
-        query_posts($query_string . '&posts_per_page=10' );
+        query_posts($query_string . '&posts_per_page=-1' );
       	
       	if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
  
@@ -64,6 +64,7 @@
     </ul>
 
     <a id="load-more-photos">LOAD MORE</a>
+    <span id="loader" style="display:none;"><img src="<?php bloginfo('template_directory'); ?>/assets/img/ajax-loader.gif" alt="Loading"></span>
 </div>
 
 

@@ -34,6 +34,7 @@ header{
     ul{
       margin-bottom: 20px;
       margin-left: 0px;
+
       li{
         display: inline;
         list-style-type: none;
@@ -52,7 +53,12 @@ header{
 
         a{             
           text-align: center;
-          padding: 5px 10px 5px 10px;
+          padding: 5px 18px 5px 18px;
+
+          @include breakpoint(tablet){
+             padding:  5px 10px 5px 10px;
+          }
+
           text-decoration: none;
           &:hover{
             background-color: $black;
@@ -63,12 +69,75 @@ header{
 
         }
 
-        &.current-menu-item a{
+        &.current-menu-item a, &.current-menu-parent a{
           background-color: $black;
           text-decoration: none;
           color: $white;
           @include opacity(1);
         }
+
+        &.current-menu-item ul li a, &.current-menu-parent ul li a{
+          background-color: transparent;
+          text-decoration: none;
+          color: $black;
+          @include opacity(1);
+        }
+
+       
+
+
+        ul.sub-menu{
+ 
+            position: absolute;
+            width: 132px;
+            top: 122px;
+            left: 326px;
+            background-color: $white;
+            padding: 10px 5px 10px 5px;
+            z-index: 99;
+            display: none; 
+            opacity: 0;
+            visibility: hidden;
+
+            @include breakpoint(smallscreen){
+              top: 162px;
+              left: 95px;
+            }
+            @include breakpoint(tablet){
+              top: 132px;
+              left: 90px;
+            }
+            @include breakpoint(portrait){
+               position: relative;
+               top: 8px;
+               left: 78px;
+               padding-top: 0px;
+            }
+
+          li{
+            display: block;
+            padding-top: 7px;
+            margin: 0;
+            a{
+             
+              &:hover{
+                background-color:transparent;
+                text-decoration: none;
+                color: $black;
+                @include opacity(0.7);
+              }
+            }
+
+          }
+
+        }
+
+         &:hover ul.sub-menu {
+          display: block;
+          opacity: 1;
+          visibility: visible;
+        }
+ 
       }
     }
   }
@@ -148,6 +217,15 @@ header{
   padding-left: 15%;
   padding-right: 15%;
   outline: none;
+  @include breakpoint(smallscreen){
+       font-size: 70px;
+    }
+  @include breakpoint(tablet){
+       font-size: 50px;
+    }
+   @include breakpoint(portrait){
+       font-size: 40px;
+    }
 }
 #search .btn {
   position: absolute;
@@ -245,10 +323,7 @@ header{
 			padding: 0 0px 0 0px;
 			font-weight: bold;
       text-align: center;
-      transition: all  0.2s ease;
-      -webkit-transition: all  0.2s ease;
-      -moz-transition: all  0.2s ease;
-      -o-transition: all  0.2s ease;
+ 
 
 			&:hover{
         background: url('assets/img/home-menu-bg-1.png') no-repeat 0 13px ;
@@ -363,6 +438,8 @@ header{
 
 #filters li.active {
   @include opacity(0.6);
+  text-decoration: underline;
+
 }
  
 /**
@@ -476,13 +553,14 @@ header{
   color: #999;
 }
 
-a#load-more-photos, a#load-more-videos{
+a#load-more-photos, a#load-more-videos, span#loader{
   display: block;
   position: relative; 
   margin: 0 auto; 
   padding: 20px 0 100px 0;
   width: 300px;
   z-index: 99;
+  text-align: center;
 
   &:hover{ cursor: pointer}
 }
@@ -500,6 +578,8 @@ a#load-more-photos, a#load-more-videos{
 .slides{
   width: 100%;
   overflow-x: hidden;
+
+  .slick-track{width: 100000px !important;}
  
   .slides-wrap{
     padding-bottom:0px !important;
@@ -511,13 +591,13 @@ a#load-more-photos, a#load-more-videos{
     margin-right: 6px;
     max-width: 100%;
     @include breakpoint(smallscreen){
-       max-width: 676px;
+       //max-width: 676px;
     }
     @include breakpoint(tablet){
        max-width: 420px;
     }
     @include breakpoint(portrait){
-       max-width: 300px;
+      max-width: 300px;
     }
 
   }
@@ -558,8 +638,9 @@ a#load-more-photos, a#load-more-videos{
   top: -30px;
   text-transform: uppercase;
   @include breakpoint(portrait){
-     top: -250px;
+     top: 0px;
   }
+  padding-bottom:30px;
 }
 
 .single-info, .single-video-info{
@@ -570,12 +651,14 @@ a#load-more-photos, a#load-more-videos{
   @include breakpoint(portrait){
      text-align: left;    
   }
+  padding-bottom:30px;
 }
 
 .single-video-title, .single-video-info{
   position: relative;
   margin-top: 20px;
   text-transform: uppercase;
+
 }
 
 iframe{
@@ -621,6 +704,12 @@ iframe{
     padding-bottom:19px;
     margin-left: -11px;
   }
+  h3{
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.04em;
+    color: #989898;
+  }
 }
 
 
@@ -629,7 +718,20 @@ iframe{
 /* FOOTER Styles
 ================================================== */
 
- 
+ .mesh{
+  font-size: 12px;
+  text-align: right;
+  padding-bottom: 10px;
+ }
+
+.one_half {
+  width: 47% !important; padding-right: 3%
+}
+
+.one_half.last_column {
+  width: 45% !important; padding-left: 5%; padding-right: 0%
+}
+
  
 
 

@@ -65,6 +65,7 @@ jQuery(document).ready(function($){
        return(false);
   }
 
+ 
   function loadFilter(){
     var urlFilter = getQueryVariable('filter');
     var filterType = urlFilter;
@@ -89,7 +90,7 @@ jQuery(document).ready(function($){
   if (urlFilter){$(window).on('load', loadFilter);}
   
 
-   //-----------------END FILTER -------------------------------------------//
+   //-----------------END URL FILTER -------------------------------------------//
 
 
 
@@ -97,30 +98,25 @@ jQuery(document).ready(function($){
   /**
    * When a filter is clicked, toggle it's active state and refresh.
    */
-  function onClickFilter(e) {
-    wookmark.initItems();
-    wookmark.layout(true);
+  var onClickFilter = function(e) {
     var $item = $(e.currentTarget),
-        activeFilters = [],
-        filterType = $item.data('filter');
-
-    if (filterType === 'all') {
-      $filters.removeClass('active');
-       $('a#load-more-photos').show();
-    } else {
-      $item.toggleClass('active');
-       $('a#load-more-photos').hide();
-
-      // Collect active filter strings
-      $filters.filter('.active').each(function() {
-        activeFilters.push($(this).data('filter'));
-      });
-    }
-    if(activeFilters == '') $('a#load-more-photos').show();
-    
-    wookmark.filter(activeFilters, 'or');
-  }
-
+            activeFilters = [],
+            filterType = $item.data('filter');
+        if (filterType === 'all') {
+          $filters.removeClass('active');
+           $('a#load-more-photos').show();
+        } else {
+          $filters.removeClass('active');
+          $item.toggleClass('active');
+          // Collect active filter strings
+          activeFilters.push($item.data('filter'));
+          $('a#load-more-photos').hide();
+          console.log(activeFilters);
+        
+        }
+        wookmark.filter(activeFilters, 'or');
+  };
+  
   // Capture filter click events.
   $('#filters').on('click.wookmarks-filter', 'li', onClickFilter);
 
@@ -136,7 +132,8 @@ jQuery(document).ready(function($){
       var is_loading = false;
        if (is_loading == false) {
             is_loading = true;
-            
+            $('a#load-more-photos').hide();
+            $('#loader').show();
 
             var data = {
                 action: 'get_photos',
@@ -144,7 +141,8 @@ jQuery(document).ready(function($){
             };
             jQuery.post(ajaxurl, data, function(response) {
                 // now we have the response, so hide the loader
-                //$('#loader').hide();
+                $('#loader').hide();
+                $('a#load-more-photos').show();
                 // append: add the new statments to the existing data
                 if(response != 0){
        
@@ -159,18 +157,25 @@ jQuery(document).ready(function($){
                       $lastTen.css('opacity', 1);
                     }, 300);
                   });
-                  wookmark = new Wookmark('#container', {
-                    itemWidth: 310 // Optional, the width of a grid item
+
+
+                  imagesLoaded('#container', function() {
+                    wookmark = new Wookmark('#container', {
+                      itemWidth: 310 // Optional, the width of a grid item
+                    });
                   });
+
                   is_loading = false;
                   var new_count = $( ".tiles-wrap li" ).length;
                   if(new_count%10 != 0){
-                    $('a#load-more-photos').hide();
+                    //$('a#load-more-photos').hide();
                   }
 
                 }
                 else{
+
                   $('a#load-more-photos').hide();
+
                   is_loading = false;
                 }
             });
