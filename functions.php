@@ -15,7 +15,7 @@ add_theme_support('post-thumbnails');
 add_image_size('large', 700, '', true); // Large Thumbnail
 add_image_size('medium', 250, '', true); // Medium Thumbnail
 add_image_size('small', 120, '', true); // Small Thumbnail
-add_image_size('home-bg', 1400, 900, true);
+add_image_size('home-bg', 1600, 9999, false);
 add_image_size('grid-photo', 310, '', true);
 add_image_size('single-photo', 940, 9999, false);
 add_image_size('multiple-photos', 9999, 600);
