@@ -15,6 +15,7 @@
     ?>
     <div class="one-half">
     <?php 
+    $i= 0;
     //LEFT COLUMN
     if (have_posts()) : while(have_posts()) : $i++; if(($i % 2) == 0) : $wp_query->next_post(); else : the_post(); ?>
       

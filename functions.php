@@ -142,12 +142,13 @@ function get_photos() {
 
     );
 
-    query_posts( $args );
+    //query_posts( $args );
+    $the_query = new WP_Query( $args );
 
-     
+    $i= 0;
     echo "<div class='one-half'>";
     //LEFT COLUMN
-    if (have_posts()) : while(have_posts()) : $i++; if(($i % 2) == 0) : $wp_query->next_post(); else : the_post();  
+    if ($the_query->have_posts()) : while($the_query->have_posts()) : $i++; if(($i % 2) == 0) : $the_query->next_post(); else : $the_query->the_post();  
         while(has_sub_field('photography'))
         { 
           $imageArray  = get_sub_field('photo');
@@ -157,7 +158,7 @@ function get_photos() {
         }
         $link = get_permalink();
         $title = get_the_title();
-        $info = get_the_field('project_information');
+        $info = get_field('project_information');
  
     echo '<a href="' . $link   .'" class="single-cat-photo" title="'. $title .'">';
     echo '      <img src="'.$imageURL .'" alt="'. $imageAlt.'">';
@@ -169,11 +170,11 @@ function get_photos() {
 
     echo "</div>";
 
-    $i = 0; rewind_posts();  
+    $i = 0;  rewind_posts();  
     echo '<div class="one-half last">';
  
     //RIGHT COLUMN
-    if (have_posts()) : while(have_posts()) : $i++; if(($i % 2) !== 0) : $wp_query->next_post(); else : the_post();  
+    if ($the_query->have_posts()) : while($the_query->have_posts()) : $i++; if(($i % 2) !== 0) : $the_query->next_post(); else : $the_query->the_post();  
         while(has_sub_field('photography'))
         { 
           $imageArray  = get_sub_field('photo');
@@ -183,7 +184,7 @@ function get_photos() {
         }
         $link = get_permalink();
         $title = get_the_title();
-        $info = get_the_field('project_information');
+        $info = get_field('project_information');
  
     echo '<a href="' . $link   .'" class="single-cat-photo" title="'. $title .'">';
     echo '      <img src="'.$imageURL .'" alt="'. $imageAlt.'">';
@@ -196,11 +197,6 @@ function get_photos() {
 
     echo "</div>";
  
-
-
-
-
-
     die();
 }
 
