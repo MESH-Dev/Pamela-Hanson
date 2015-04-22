@@ -12,5 +12,4 @@
 
 </div><!-- End of Content -->
  
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

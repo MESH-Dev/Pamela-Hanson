@@ -20,7 +20,7 @@ header{
   }
   .logo{
     text-align: center;
-    padding-bottom: 25px;
+    padding-bottom: 22px;
     img:hover{
       @include opacity(1);
     }
@@ -39,7 +39,8 @@ header{
         display: inline;
         list-style-type: none;
         text-transform: uppercase;
-        margin: 0 30px 0 30px;
+        margin: 0 10px 0 10px;
+      
  
  
         @include breakpoint(tablet){
@@ -53,11 +54,14 @@ header{
 
         a{             
           text-align: center;
-          padding: 5px 18px 5px 18px;
+          font-size: 18px;
+          padding: 4px 16px 4px 16px;
 
           @include breakpoint(tablet){
-             padding:  5px 10px 5px 10px;
+             padding:  2px 10px 2px 10px;
+             font-size: 14px;
           }
+
 
           text-decoration: none;
           &:hover{
@@ -89,9 +93,9 @@ header{
         ul.sub-menu{
  
             position: absolute;
-            width: 132px;
-            top: 122px;
-            left: 326px;
+            width: 157px;
+            top: 117px;
+            left: 328px;
             background-color: $white;
             padding: 10px 5px 10px 5px;
             z-index: 99;
@@ -100,17 +104,19 @@ header{
             visibility: hidden;
 
             @include breakpoint(smallscreen){
-              top: 162px;
-              left: 95px;
+              top: 157px;
+              left: 196px;
             }
             @include breakpoint(tablet){
-              top: 132px;
-              left: 90px;
+              top: 125px;
+              left: 98px;
+              width: 117px;
+
             }
             @include breakpoint(portrait){
                position: relative;
-               top: 8px;
-               left: 78px;
+               top: 0px;
+               left: 86px;
                padding-top: 0px;
             }
 
@@ -694,7 +700,7 @@ iframe{
 .page-content{
   background-color: $white;
   padding: 20px 30px 20px 30px;
-  border: 5px solid $black;
+  border: 2px solid $black;
   margin-bottom: 40px;
 
   h1{
@@ -711,6 +717,123 @@ iframe{
     color: #989898;
   }
 }
+
+/* PHOTO LANDING PAGE
+================================================== */
+.fluid-container{
+  width: 84%;
+  padding: 0 8% 0 8%;
+  margin: 0;
+   position: relative; 
+   @include breakpoint(portrait){
+     width: 300px; 
+     margin: 0 auto; padding: 0;
+  }
+}
+
+.photo-landing{
+  padding-top: 30px;
+}
+
+.one-third{
+  width: 32%;
+  padding-right: 2%;
+  float: left;
+  text-align: center;
+
+  @include breakpoint(portrait){
+     width: 300px; 
+  }
+
+  &.last{
+    padding-right: 0%;
+  }
+  img{
+    width: 100%;
+    height: auto;
+  }
+  a{
+    text-decoration: none;
+    &:hover{@include opacity(0.5);}
+    &:hover h2{@include opacity(0.5);}
+  }
+
+  h2.photo-subtitle{
+    font-size: 24px;
+    padding: 10px 0 40px 0;
+
+    @include breakpoint(tablet){
+        font-size: 18px; 
+    }
+   
+    
+
+  }
+}
+
+/* CATEGORY PHOTO PAGE
+================================================== */
+.category-title {
+  h1{
+    font-size: 14px;
+  }
+  padding-bottom: 10px;
+   
+}
+.fluid-category{
+  width: 88%;
+  padding: 0 6% 0 6%;
+  margin: 0;
+   position: relative; 
+   @include breakpoint(portrait){
+     width: 300px; 
+     margin: 0 auto; padding: 0;
+  }
+}
+
+.one-half{
+  width: 47%;
+  padding-right: 6%;
+  float: left;
+  text-align: left;
+
+  &.last{
+    padding-right: 0%;
+  }
+
+  @include breakpoint(portrait){
+     width: 300px; 
+  }
+
+  img{
+    width: 100%;
+    height: auto;
+  }
+  a{
+    text-decoration: none;
+    margin-bottom: 60px;
+    display: block;
+    &:hover{@include opacity(0.5);}
+    &:hover h2{@include opacity(0.5);}
+
+  }
+
+  h2.project-title{
+    font-size: 18px;
+    line-height: 22px;
+    padding: 10px 0 3px 0;
+
+    @include breakpoint(tablet){
+        font-size: 18px; 
+    }
+  }
+  span.project-desc{
+    color: $gray;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+}
+ 
 
 
 

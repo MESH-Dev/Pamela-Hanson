@@ -127,6 +127,7 @@ function get_photos() {
 
 
     $last_count = $_POST['last_count'];
+    $cat_id = $_POST['category'];
 
     $published_posts = wp_count_posts('photography')->publish;
     if($published_posts <= $last_count){
@@ -135,6 +136,7 @@ function get_photos() {
 
     $args = array(
         'post_type' => 'photography',
+        'cat' => $cat_id,
         'posts_per_page' => 10,
         'offset' => $last_count
 
@@ -143,37 +145,62 @@ function get_photos() {
     query_posts( $args );
 
      
-    if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-     
-        <?php
-        $ctr = 0;
+    echo "<div class='one-half'>";
+    //LEFT COLUMN
+    if (have_posts()) : while(have_posts()) : $i++; if(($i % 2) == 0) : $wp_query->next_post(); else : the_post();  
         while(has_sub_field('photography'))
         { 
-            $imageArray  = get_sub_field('photo');
-            $imageAlt = $imageArray['alt'];
-            $imageURL = $imageArray['sizes']['grid-photo'];
-            break;
+          $imageArray  = get_sub_field('photo');
+          $imageAlt = $imageArray['alt'];
+          $imageURL = $imageArray['sizes']['single-photo'];
+          break;
         }
-        $categories = get_the_category();
-        $separator = ',';
-        $cat_list = '';
-        foreach($categories as $category) {
-          $cat_list .= '"'.$category->slug.'"' . $separator;
-        }
-        $cat_list = trim($cat_list, $separator);
         $link = get_permalink();
         $title = get_the_title();
-        $id = get_the_ID();
-      
+        $info = get_the_field('project_information');
+ 
+    echo '<a href="' . $link   .'" class="single-cat-photo" title="'. $title .'">';
+    echo '      <img src="'.$imageURL .'" alt="'. $imageAlt.'">';
+    echo '    <h2 class="project-title">'. $title .'</h2>';
+    echo '     <span class="project-desc">'. $info .'</span>';
+    echo '</a>';
 
-        echo "<li data-filter-class='[".$cat_list."]'>";
-        echo "<a href='". $link ."'>";
-        echo "<img src='". $imageURL."' >";
-        echo "<span class='project-title'>". $title  ."</span>";
-        echo "</a></li>";
+    endif; endwhile;  endif;   
 
-       
-    endwhile; 
+    echo "</div>";
+
+    $i = 0; rewind_posts();  
+    echo '<div class="one-half last">';
+ 
+    //RIGHT COLUMN
+    if (have_posts()) : while(have_posts()) : $i++; if(($i % 2) !== 0) : $wp_query->next_post(); else : the_post();  
+        while(has_sub_field('photography'))
+        { 
+          $imageArray  = get_sub_field('photo');
+          $imageAlt = $imageArray['alt'];
+          $imageURL = $imageArray['sizes']['single-photo'];
+          break;
+        }
+        $link = get_permalink();
+        $title = get_the_title();
+        $info = get_the_field('project_information');
+ 
+    echo '<a href="' . $link   .'" class="single-cat-photo" title="'. $title .'">';
+    echo '      <img src="'.$imageURL .'" alt="'. $imageAlt.'">';
+    echo '    <h2 class="project-title">'. $title .'</h2>';
+    echo '     <span class="project-desc">'. $info .'</span>';
+    echo '</a>';
+   
+
+    endif; endwhile;  endif;  
+
+    echo "</div>";
+ 
+
+
+
+
+
     die();
 }
 

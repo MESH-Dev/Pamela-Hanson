@@ -128,7 +128,8 @@ jQuery(document).ready(function($){
 
   function loadPhotos() {
 
-      var last_count = $( ".tiles-wrap li" ).length;
+      var last_count = $( ".single-cat-photo" ).length;
+      var category = $(".category-title h1").data("id");
       var is_loading = false;
        if (is_loading == false) {
             is_loading = true;
@@ -137,7 +138,8 @@ jQuery(document).ready(function($){
 
             var data = {
                 action: 'get_photos',
-                last_count: last_count
+                last_count: last_count,
+                category: category
             };
             jQuery.post(ajaxurl, data, function(response) {
                 // now we have the response, so hide the loader
@@ -184,6 +186,9 @@ jQuery(document).ready(function($){
  
   $('a#load-more-photos').click(loadPhotos);
 
+ 
+
+
 
   //-----------------LOAD MORE VIDEO -------------------------------------------//
 
@@ -191,9 +196,9 @@ jQuery(document).ready(function($){
  
        var is_loading = false;
        var last_count = $( ".tiles-wrap li" ).length;
+
        if (is_loading == false) { 
             is_loading = true;
-           
 
             var data = {
                 action: 'get_videos',

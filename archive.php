@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div id="content">
-
+aaaaa
 	<?php if ( have_posts() ) : ?>
 		<h1>
 		<?php if ( is_day() ) : ?>
