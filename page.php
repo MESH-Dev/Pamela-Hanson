@@ -2,14 +2,21 @@
 <?php get_header('interior'); ?>
 <?php
  
-    $imageArray  = get_field('background_image');
-    $imageAlt  = $imageArray['alt'];
-    $imageURL = $imageArray['sizes']['home-bg'];
+$ctr = 0;
+	while(has_sub_field('photographs'))
+	{ 
+		$ctr++;
+		$text_color[$ctr] = get_sub_field('text_color');
+        $imageArray  = get_sub_field('photograph');
+	    $imageAlt[$ctr]  = $imageArray['alt'];
+	    $imageURL[$ctr]  = $imageArray['sizes']['home-bg'];
+	}
+	$rand_pic = rand(1,$ctr);
 
 ?>
 
 
-<div class="page-bg-container" style="background-image: url(<?php echo $imageURL; ?>)"></div> 
+<div class="page-bg-container" style="background-image: url(<?php echo $imageURL[$rand_pic]; ?>)"></div> 
 
 	<div class="container">
  		

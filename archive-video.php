@@ -1,45 +1,82 @@
 <?php get_header(); ?>
 <?php get_header('interior'); ?>
 
+
 <div class="container">
-  <div class="twelve columns filters">  
-    <ol id="filters">
-      <li data-filter="all"><i class="fa fa-caret-right"></i> Video </li>
- 
-    </ol>
+  <div class="twelve columns category-title">  
+    <h1>Video &raquo;</h1> 
   </div>
 </div>
 
-
- <div role="main">
-      <ul id="container" class="tiles-wrap animated">
+<div class="fluid-category">
+ 
+  <?php
+   
+    query_posts($query_string . '&posts_per_page=-10' );
+    ?>
+    <div class="one-half">
+    <?php 
+    $i= 0;
+    //LEFT COLUMN
+    if (have_posts()) : while(have_posts()) : $i++; if(($i % 2) == 0) : $wp_query->next_post(); else : the_post(); ?>
+      
         <?php
+          $imageArray  = get_field('thumbnail_image');
+          $imageAlt = $imageArray['alt'];
+          $imageURL = $imageArray['sizes']['grid-photo'];
+        ?>
+         
+        <a href="<?php the_permalink();?>" class="single-cat-photo" title="<?php echo get_the_title(); ?>">
+          <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageAlt; ?>">
+          <h2 class="project-title"><?php the_title(); ?></h2>
+          <span class="project-desc"><?php the_field('project_information'); ?></span>
+        </a>
+      
+
+
+    <?php 
  
-        query_posts($query_string . '&posts_per_page=-1' );
-      	
-      	if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
- 
-      	<?php
-            $imageArray  = get_field('thumbnail_image');
-      	    $imageAlt = $imageArray['alt'];
-      	    $imageURL = $imageArray['sizes']['grid-photo'];
-      	?>
-      	<li  >
-          <a href="<?php the_permalink();?>">
-            <img src="<?php echo $imageURL; ?>" >
-            <span class="project-title"><?php the_title();?></span>
-          </a>
-        </li>
+    endif; endwhile;  endif; ?>
+
+    </div>
+
+    <?php $i = 0; rewind_posts(); ?>
+    <div class="one-half last">
+
+     <?php 
+    //RIGHT COLUMN
+    if (have_posts()) : while(have_posts()) : $i++; if(($i % 2) !== 0) : $wp_query->next_post(); else : the_post(); ?>
+    
+      <?php
+      
+      while(has_sub_field('photography'))
+      { 
+        $imageArray  = get_sub_field('photo');
+        $imageAlt = $imageArray['alt'];
+        $imageURL = $imageArray['sizes']['single-photo'];
+        break;
+      }
+
+
+      ?>
        
+      <a href="<?php the_permalink();?>" class="single-cat-photo" title="<?php echo get_the_title(); ?>">
+        <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageAlt; ?>">
+        <h2 class="project-title"><?php the_title(); ?></h2>
+        <span class="project-desc"><?php the_field('project_information'); ?></span>
+      </a>
+   
 
-       	<?php   
-      	endwhile; 
-       	?>
+      <?php endif; endwhile;  endif; ?>
 
- 
-    </ul>
+    </div> 
+    
 
+</div>
+<br class="clear" /> 
+<div class="container">
     <a id="load-more-videos">LOAD MORE</a>
+    <span id="loader" style="display:none;"><img src="<?php bloginfo('template_directory'); ?>/assets/img/ajax-loader.gif" alt="Loading"></span>
 </div>
 
 

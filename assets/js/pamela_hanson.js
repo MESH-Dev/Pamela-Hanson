@@ -12,21 +12,12 @@ jQuery(document).ready(function($){
           $(this).removeClass('open');
       }
   });
-
-  $('.slides-wrap').slick({
-    variableWidth: true,
-    accessibility: true,
-    adaptiveHeight: true,
-    arrows: true,
-    infinite: false,
-    slide: '.image-content',
-    prevArrow: '<div class="button slick-prev"><i class="fa fa-chevron-left"></i></div>',
-    nextArrow: '<div class="button slick-next"><i class="fa fa-chevron-right"></i></div>'
-  });
-
+ 
   $('#home-logo').hover( function(){
     $('ul#menu-main-navigation').addClass('show');
   });
+
+ 
 
 
 });
@@ -34,6 +25,36 @@ jQuery(document).ready(function($){
  
 //------------  ---------------------//
 (function($) {
+
+  var $frame  = $('#slider');
+  var $slidee = $frame.children('ul').eq(0);
+  var $wrap   = $frame.parent();
+
+  // Call Sly on frame
+  $frame.sly({
+    horizontal: 1,
+    itemNav: 'basic',
+    smart: 1,
+    activateOn: 'click',
+    mouseDragging: 1,
+    touchDragging: 1,
+    releaseSwing: 1,
+    startAt: 1,
+    scrollBar: $wrap.find('.scrollbar'),
+    scrollBy: 1,
+    speed: 300,
+    elasticBounds: 1,
+    easing: 'easeOutExpo',
+    dragHandle: 1,
+    dynamicHandle: 0,
+    clickBar: 1,
+ 
+  });
+
+   $(window).resize(function(e) {
+      $frame.sly('reload');
+  });
+
  
  
   //-----------------LOAD MORE PHOTOS -------------------------------------------//
@@ -60,7 +81,7 @@ jQuery(document).ready(function($){
                 $('a#load-more-photos').show();
                 // append: add the new statments to the existing data
                 if(response != 0){
-       
+                  
                   $('.fluid-category').append(response);
                   //$items = $('li', $container);
                   //$lastTen = $items.slice(last_count, last_count+10).css('opacity', 0);
@@ -68,14 +89,12 @@ jQuery(document).ready(function($){
                   is_loading = false;
                   var new_count = $( ".single-cat-photo" ).length;
                   if(new_count%10 != 0){
-                    //$('a#load-more-photos').hide();
+                    $('a#load-more-photos').hide();
                   }
 
                 }
                 else{
-
                   $('a#load-more-photos').hide();
-
                   is_loading = false;
                 }
             });
@@ -91,12 +110,15 @@ jQuery(document).ready(function($){
   //-----------------LOAD MORE VIDEO -------------------------------------------//
 
   function loadVideos() {
+      var container = '.fluid-category',
+      $container = $(container);
+      var last_count = $( ".single-cat-photo" ).length;
  
-       var is_loading = false;
-       var last_count = $( ".tiles-wrap li" ).length;
-
-       if (is_loading == false) { 
+      var is_loading = false;
+       if (is_loading == false) {
             is_loading = true;
+            $('a#load-more-videos').hide();
+            $('#loader').show();
 
             var data = {
                 action: 'get_videos',
@@ -104,36 +126,28 @@ jQuery(document).ready(function($){
             };
             jQuery.post(ajaxurl, data, function(response) {
                 // now we have the response, so hide the loader
-                //$('#loader').hide();
+                $('#loader').hide();
+                $('a#load-more-videos').show();
                 // append: add the new statments to the existing data
                 if(response != 0){
-                  $container.append(response);
-                  $items = $('li', $container);
-                  $lastTen = $items.slice(last_count, last_count+10).css('opacity', 0);
-                  wookmark.initItems();
-                  wookmark.layout(true, function () {
-                    // Fade in items after layout
-                    setTimeout(function() {
-                      $lastTen.css('opacity', 1);
-                    }, 300);
-                  });
-                  wookmark = new Wookmark('#container', {
-                    itemWidth: 310 // Optional, the width of a grid item
-                  });
                   
-                  // set is_loading to false to accept new loading
+                  $('.fluid-category').append(response);
+                  //$items = $('li', $container);
+                  //$lastTen = $items.slice(last_count, last_count+10).css('opacity', 0);
+ 
                   is_loading = false;
-                  var new_count = $( ".tiles-wrap li" ).length;
+                  var new_count = $( ".single-cat-photo" ).length;
                   if(new_count%10 != 0){
                     $('a#load-more-videos').hide();
                   }
+
                 }
                 else{
                   $('a#load-more-videos').hide();
                   is_loading = false;
                 }
             });
-        }
+        }    
  
   }
  

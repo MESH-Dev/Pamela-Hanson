@@ -69,7 +69,7 @@
       <a href="<?php the_permalink();?>" class="single-cat-photo" title="<?php echo get_the_title(); ?>">
         <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageAlt; ?>">
         <h2 class="project-title"><?php the_title(); ?></h2>
-        <span class="project-desc"><?php the_content();?></span>
+        <span class="project-desc"><?php the_field('project_information'); ?></span>
       </a>
    
 

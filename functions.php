@@ -1,10 +1,7 @@
 <?php  
 //enqueue scripts and styles *use production assets. Dev assets are located in assets/css and assets/js
 function loadup_scripts() {
-
-    wp_enqueue_script('imagesloaded-js', get_template_directory_uri().'/assets/libs/imagesloaded.pkgd.min.js','', null, true);
-    wp_enqueue_script('wookmark-js', get_template_directory_uri().'/assets/libs/wookmark.js',array( 'jquery' ), null, true);
-    wp_enqueue_script('silppry-js', get_template_directory_uri().'/assets/libs/slick.js',array( 'jquery' ), null, true);
+    wp_enqueue_script('silppry-js', get_template_directory_uri().'/assets/libs/sly-dev.js',array( 'jquery' ), null, true);
     wp_enqueue_script('theme-js', get_template_directory_uri().'/assets/js/pamela_hanson.js',array( 'jquery' ), null, true);
  
 }
@@ -18,7 +15,7 @@ add_image_size('small', 120, '', true); // Small Thumbnail
 add_image_size('home-bg', 1600, 9999, false);
 add_image_size('grid-photo', 310, '', true);
 add_image_size('single-photo', 940, 9999, false);
-add_image_size('multiple-photos', 9999, 600);
+add_image_size('multiple-photos', 9999, 600, false);
 
 
 
@@ -205,8 +202,8 @@ add_action('wp_ajax_get_videos', 'get_videos');
 add_action('wp_ajax_nopriv_get_videos', 'get_videos');
 function get_videos() {  
 
-
     $last_count = $_POST['last_count'];
+    
 
     $published_posts = wp_count_posts('video')->publish;
     if($published_posts <= $last_count){
@@ -220,29 +217,55 @@ function get_videos() {
 
     );
 
-    query_posts( $args );
+    //query_posts( $args );
+    $the_query = new WP_Query( $args );
 
-     
-    if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-     
-        <?php
+    $i= 0;
+    echo "<div class='one-half'>";
+    //LEFT COLUMN
+    if ($the_query->have_posts()) : while($the_query->have_posts()) : $i++; if(($i % 2) == 0) : $the_query->next_post(); else : $the_query->the_post();  
  
         $imageArray  = get_field('thumbnail_image');
         $imageAlt = $imageArray['alt'];
-        $imageURL = $imageArray['sizes']['grid-photo'];
+        $imageURL = $imageArray['sizes']['single-photo'];
+ 
         $link = get_permalink();
         $title = get_the_title();
-
+        $info = get_field('project_information');
  
-        echo "<li>";
-        echo "  <a href=". $link .">";
-        echo "    <img src=".$imageURL. ">";
-        echo "      <span class='project-title'>". $title  ."</span>";
-        echo "  </a>";
-        echo "</li>";
+    echo '<a href="' . $link   .'" class="single-cat-photo" title="'. $title .'">';
+    echo '      <img src="'.$imageURL .'" alt="'. $imageAlt.'">';
+    echo '    <h2 class="project-title">'. $title .'</h2>';
+    echo '     <span class="project-desc">'. $info .'</span>';
+    echo '</a>';
 
-       
-    endwhile; 
+    endif; endwhile;  endif;   
+
+    echo "</div>";
+
+    $i = 0;  rewind_posts();  
+    echo '<div class="one-half last">';
+ 
+    //RIGHT COLUMN
+    if ($the_query->have_posts()) : while($the_query->have_posts()) : $i++; if(($i % 2) !== 0) : $the_query->next_post(); else : $the_query->the_post();  
+        $imageArray  = get_field('thumbnail_image');
+        $imageAlt = $imageArray['alt'];
+        $imageURL = $imageArray['sizes']['single-photo'];
+        $link = get_permalink();
+        $title = get_the_title();
+        $info = get_field('project_information');
+ 
+    echo '<a href="' . $link   .'" class="single-cat-photo" title="'. $title .'">';
+    echo '      <img src="'.$imageURL .'" alt="'. $imageAlt.'">';
+    echo '    <h2 class="project-title">'. $title .'</h2>';
+    echo '     <span class="project-desc">'. $info .'</span>';
+    echo '</a>';
+   
+
+    endif; endwhile;  endif;  
+
+    echo "</div>";
+ 
     die();
 }
  
