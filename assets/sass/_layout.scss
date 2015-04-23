@@ -624,7 +624,7 @@ a#load-more-photos, a#load-more-videos, span#loader{
     background: #ffccc00;
   }
   img{
-
+    width: 100%;
     @include breakpoint(tablet){
        max-width: 420px;
     }

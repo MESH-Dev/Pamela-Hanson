@@ -1,7 +1,8 @@
 <?php  
 //enqueue scripts and styles *use production assets. Dev assets are located in assets/css and assets/js
 function loadup_scripts() {
-    wp_enqueue_script('silppry-js', get_template_directory_uri().'/assets/libs/sly-dev.js',array( 'jquery' ), null, true);
+    wp_enqueue_script('imgwait-js', get_template_directory_uri().'/assets/libs/waitforimages.min.js',array( 'jquery' ), null, true);
+    wp_enqueue_script('sly-js', get_template_directory_uri().'/assets/libs/sly-dev.js',array( 'jquery' ), null, true);
     wp_enqueue_script('theme-js', get_template_directory_uri().'/assets/js/pamela_hanson.js',array( 'jquery' ), null, true);
  
 }
@@ -16,6 +17,7 @@ add_image_size('home-bg', 1600, 9999, false);
 add_image_size('grid-photo', 310, '', true);
 add_image_size('single-photo', 940, 9999, false);
 add_image_size('multiple-photos', 9999, 600, false);
+
 
 
 

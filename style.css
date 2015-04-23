@@ -1932,6 +1932,10 @@ a#load-more-photos:hover, a#load-more-videos:hover, span#loader:hover {
   padding: 0;
   background: #ffccc00;
 }
+/* line 626, assets/sass/_layout.scss */
+.frame img {
+  width: 100%;
+}
 @media only screen and (max-width: 767px) {
   /* line 626, assets/sass/_layout.scss */
   .frame img {

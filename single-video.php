@@ -2,9 +2,8 @@
 <?php get_header('interior'); ?>
 
 <div class="container">
-  <div class="twelve columns filters">  
-    <ol id="filters">
-      <li data-filter="all"><i class="fa fa-caret-right"></i> <a href="<?php echo site_url() ?>/video/">Video </a></li>
+  <div class="twelve columns project-nav"> 
+       <a href="<?php echo site_url() ?>/video/"><i class="fa fa-caret-left"></i> Back to Video </a> 
  
     </ol>
   </div>
