@@ -17,40 +17,44 @@ jQuery(document).ready(function($){
     $('ul#menu-main-navigation').addClass('show');
   });
 
-  $('.frame').waitForImages(function() {
-    
-      console.log('its ready');
-      var $frame  = $('#slider');
-      var $slidee = $frame.children('ul').eq(0);
-      var $wrap   = $frame.parent();
+  var w_size = $( window ).width();
+  console.log(w_size);
+  if (w_size > 480){
+    $('.frame').waitForImages(function() {
+      
+        console.log('its ready');
+        var $frame  = $('#slider');
+        var $slidee = $frame.children('ul').eq(0);
+        var $wrap   = $frame.parent();
 
-      // Call Sly on frame
-      $frame.sly({
-        horizontal: 1,
-        itemNav: 'basic',
-        smart: 1,
-        activateOn: 'click',
-        mouseDragging: 1,
-        touchDragging: 1,
-        releaseSwing: 1,
-        startAt: 1,
-        scrollBar: $wrap.find('.scrollbar'),
-        scrollBy: 1,
-        speed: 300,
-        elasticBounds: 1,
-        easing: 'easeOutExpo',
-        dragHandle: 1,
-        dynamicHandle: 0,
-        clickBar: 1,
-     
-      });
-
-      $(window).resize(function(e) {
-          $frame.sly('reload');
-      });
-
+        // Call Sly on frame
+        $frame.sly({
+          horizontal: 1,
+          itemNav: 'basic',
+          smart: 1,
+          activateOn: 'click',
+          mouseDragging: 1,
+          touchDragging: 1,
+          releaseSwing: 1,
+          startAt: 1,
+          scrollBar: $wrap.find('.scrollbar'),
+          scrollBy: 1,
+          speed: 300,
+          elasticBounds: 1,
+          easing: 'easeOutExpo',
+          dragHandle: 1,
+          dynamicHandle: 0,
+          clickBar: 1,
        
-  });
+        });
+
+        $(window).resize(function(e) {
+            $frame.sly('reload');
+        });
+
+         
+    });
+  }
 
   
 

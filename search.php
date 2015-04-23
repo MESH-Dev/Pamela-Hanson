@@ -7,20 +7,17 @@ $s = $_GET['s'];
 ?>
 
 <div class="container">
-  <div class="twelve columns filters">  
-    <ol id="filters">
-      <li data-filter="all"><i class="fa fa-caret-right"></i> Search Results: <?php echo get_search_query();?> </li>
+  <div class="twelve columns category-title">  
+    
+      <h1>Search Results &raquo; <?php echo get_search_query();?> </h1>
  
-    </ol>
+    
   </div>
 </div>
 
 
- <div role="main">
-      <ul id="container" class="tiles-wrap animated">
+<div class="fluid-category">
         <?php
-
- 
         $search_args = array(
           'post_type' => array( 'photography', 'video' ),
           'posts_per_page' => '-1',
@@ -72,11 +69,12 @@ $s = $_GET['s'];
 
  
 
- 
-        //$the_query = new WP_Query( $args );
-      	
-      	//if ($the_query->have_posts() ) while ( $the_query->have_posts() ) : $the_query->the_post(); 
+
+       ?> <div class="one-half"> 
+       <?php
+       $ctr = 0;
         foreach ($posts as $post ) : 
+          if ($ctr%2==0){
           setup_postdata( $post ); 
         ?>
       	<?php
@@ -93,25 +91,70 @@ $s = $_GET['s'];
             }
 
       	    $imageAlt = $imageArray['alt'];
-      	    $imageURL = $imageArray['sizes']['grid-photo'];
+      	    $imageURL = $imageArray['sizes']['single-photo'];
       	?>
-      	<li  >
-          <a href="<?php the_permalink();?>">
-            <img src="<?php echo $imageURL; ?>" >
-            <span class="project-title"><?php the_title();?></span>
+ 
+          <a href="<?php the_permalink();?>" class="single-cat-photo" title="<?php echo get_the_title(); ?>">
+            <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageAlt; ?>" >
+             <h2 class="project-title"><?php the_title(); ?></h2>
+            <span class="project-desc"><?php the_field('project_information'); ?></span>
           </a>
-        </li>
+ 
        
 
        	<?php   
       	//endwhile;
+        }
+        $ctr++;
         endforeach;
-        wp_reset_postdata(); 
+ 
        	?>
+        </div>
 
- 
-    </ul>
- 
+
+
+        <div class="one-half last">
+
+          <?php
+           $ctr = 0;
+            foreach ($posts as $post ) : 
+              if ($ctr%2==1){
+              setup_postdata( $post ); 
+            ?>
+            <?php
+              $post_type = get_post_type( get_the_ID() );
+              if($post_type == 'video'){
+                  $imageArray  = get_field('thumbnail_image');
+                }
+                if($post_type == 'photography'){
+                  while(has_sub_field('photography'))
+                { 
+                    $imageArray  = get_sub_field('photo');
+                    break;
+                }
+                }
+
+                $imageAlt = $imageArray['alt'];
+                $imageURL = $imageArray['sizes']['single-photo'];
+            ?>
+            <a href="<?php the_permalink();?>" class="single-cat-photo" title="<?php echo get_the_title(); ?>">
+              <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageAlt; ?>" >
+               <h2 class="project-title"><?php the_title(); ?></h2>
+              <span class="project-desc"><?php the_field('project_information'); ?></span>
+            </a>
+           
+
+            <?php   
+            //endwhile;
+            }
+            $ctr++;
+            endforeach;
+            $ctr=0;
+            wp_reset_postdata(); 
+            ?>
+
+        </div>
+  <br class="clear" /> 
 </div>
 
 

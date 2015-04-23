@@ -48,7 +48,7 @@
 	</div>  
 	<div id="search">
 	    <button type="button" class="close">×</button>
-	    <div class="search-title">> Search Pamela's Work: </div>
+	    <div class="search-title"><i class="fa fa-caret-right"></i>  Search Pamela's Work: </div>
 	    <form  role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
 	        <input type="search" value="<?php echo get_search_query() ?>" name="s" placeholder="search here" />
 	        <!--<button type="submit" class="btn btn-primary">Search</button>-->

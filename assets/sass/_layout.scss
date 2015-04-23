@@ -51,6 +51,20 @@ header{
            margin: 7px 0px 7px 0px;
         }
 
+        &:hover a{
+            background-color: $black;
+            text-decoration: none;
+            color: $white;
+            @include opacity(1);
+          }
+
+         &:hover ul.sub-menu li a{
+            text-decoration: none;
+            background-color: $white;
+            color: $black;
+            @include opacity(1);
+          } 
+
 
         a{             
           text-align: center;
@@ -593,6 +607,37 @@ a#load-more-photos, a#load-more-videos, span#loader{
 
 #single-img{
   width:940px; margin:0px auto; height: auto;
+  @include breakpoint(smallscreen){
+    width: 670px;
+  }
+  @include breakpoint(tablet){
+    width: 420px;
+  }
+  @include breakpoint(portrait){
+    width: 300px;
+  }
+
+  ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
+  
+ 
+  }
+  ul li {
+    float: left;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+ 
+  }
+  img{
+    width: 100%;
+
+  }
+ 
   .scrollbar{
     display: none;
   }
@@ -606,30 +651,53 @@ a#load-more-photos, a#load-more-videos, span#loader{
   position: relative;
 }
 .frame{
-   height: 600px; line-height:600px; padding: 0; overflow: hidden;
+   height: 600px; 
+   line-height:600px;
+   padding: 0; 
+   overflow: hidden;
+
+   @include breakpoint(portrait){
+      width: 300px;
+      margin: 0 auto; 
+      height: auto;
+    }
     
 
   ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  height: 100%;
- 
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    @include breakpoint(portrait){
+      height: auto;
+    }
   }
+
   ul li {
     float: left;
     height: 100%;
     margin: 0 5px 0 0;
     padding: 0;
-    background: #ffccc00;
+
+    @include breakpoint(portrait){
+      display: block;
+      float: left;
+      height: auto;
+      margin: 0 5px 0 0;
+      padding: 0;
+        
+    }
+ 
   }
   img{
     width: 100%;
     @include breakpoint(tablet){
-       max-width: 420px;
+       //max-width: 420px;
     }
     @include breakpoint(portrait){
        max-width: 300px;
+       height: auto;
+
     }
   }
 } 
@@ -643,7 +711,16 @@ a#load-more-photos, a#load-more-videos, span#loader{
   @include border-radius(5px);
   &.single-img{
     visibility: hidden;
+    width: 0;
   }
+  @include breakpoint(tablet){
+      visibility: hidden;
+      width: 0;
+    }
+    @include breakpoint(portrait){
+      visibility: hidden;
+      width: 0;
+    }
 
 }
 .scrollbar .handle {
@@ -784,7 +861,7 @@ iframe{
   }
 
   h2.photo-subtitle{
-    font-size: 24px;
+    font-size: 18px;
     padding: 10px 0 40px 0;
 
     @include breakpoint(tablet){
