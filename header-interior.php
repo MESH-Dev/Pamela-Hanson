@@ -10,8 +10,7 @@
 			<div class="twelve columns logo">
  
 			 	<a href="<?php bloginfo( 'url' );?>" title="<?php bloginfo( 'name' );?>">
-			 		<img src="<?php bloginfo('template_directory'); ?>/assets/img/logo.png" alt="Pamela Hanson">
-			 		 
+			 		<h1 id="header-logo">Pamela Hanson</h1> 
 			 	</a>
 
 			</div>

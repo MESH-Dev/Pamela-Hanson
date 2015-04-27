@@ -4,20 +4,8 @@
 
 global $wp_query;
 $s = $_GET['s'];
-?>
 
-<div class="container">
-  <div class="twelve columns category-title">  
-    
-      <h1>Search Results &raquo; <?php echo get_search_query();?> </h1>
  
-    
-  </div>
-</div>
-
-
-<div class="fluid-category">
-        <?php
         $search_args = array(
           'post_type' => array( 'photography', 'video' ),
           'posts_per_page' => '-1',
@@ -59,19 +47,36 @@ $s = $_GET['s'];
           $postids[]=$item->ID; //create a new query only of the post ids
         }
         $uniqueposts = array_unique($postids); //remove duplicate post ids
-
-        $posts = get_posts(array(
-          'post__in' => $uniqueposts, //new query of only the unique post ids on the merged queries from above
-          'post_type' => array( 'photography', 'video' ),
-          'post_status' => 'publish',
-          'posts_per_page' => '-1'
-        ));
-
+        $results = 0;
  
+        if( $uniqueposts ){
+          $results = 1;
+          $posts = get_posts(array(
+            'post__in' => $uniqueposts, //new query of only the unique post ids on the merged queries from above
+            'post_type' => array( 'photography', 'video' ),
+            'post_status' => 'publish',
+            'posts_per_page' => '-1'
+          ));
+        }
+?>
+
+<div class="container">
+  <div class="twelve columns category-title">  
+    
+      <h1>Search Results &raquo; <?php echo get_search_query();?> </h1>
+ 
+      <?php if(!$results){ ?>
+      <h2 class="no-results">NO RESULTS FOUND! PLEASE SEARCH AGAIN.</h2>
+      <?php }?>
+  </div>
+</div>
 
 
-       ?> <div class="one-half"> 
+<?php if($results){ ?>
+<div class="fluid-category">
+       <div class="one-half"> 
        <?php
+ 
        $ctr = 0;
         foreach ($posts as $post ) : 
           if ($ctr%2==0){
@@ -156,6 +161,6 @@ $s = $_GET['s'];
         </div>
   <br class="clear" /> 
 </div>
-
+<?php } ?>
 
 <?php get_footer(); ?>
