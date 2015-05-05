@@ -44,9 +44,11 @@
 	$doc.on(wheelEvent, function (event) {
 		var sly = event.originalEvent[namespace];
 		var time = +new Date();
+	 
 		// Update last global wheel time, but only when event didn't originate
 		// in Sly frame, or the origin was less than scrollHijack time ago
 		if (!sly || sly.options.scrollHijack < time - lastGlobalWheel) lastGlobalWheel = time;
+
 	});
 
 	/**
@@ -669,6 +671,9 @@
 			if (!delta) {
 				return;
 			}
+			itemNav = false;
+			immediate = true;
+			delta = delta*40;
 			if (itemNav) {
 				self[centeredNav ? 'toCenter' : 'toStart'](
 					within((centeredNav ? rel.centerItem : rel.firstItem) + o.scrollBy * delta, 0, items.length)
@@ -676,6 +681,8 @@
 			} else {
 				slideTo(pos.dest + delta, immediate);
 			}
+
+			
 		};
 
 		/**
@@ -1576,6 +1583,8 @@
 				scrolling.delta %= 1;
 			}
 			return scrolling.finalDelta;
+			//var delta = Math.max(-1, Math.min(1, (event.wheelDelta || -event.detail)));
+			//return delta;
 		}
 
 		/**
@@ -1585,6 +1594,7 @@
 		 *
 		 * @return {Void}
 		 */
+
 		function scrollHandler(event) {
 			// Mark event as originating in a Sly instance
 			event.originalEvent[namespace] = self;
@@ -1603,6 +1613,7 @@
 			if (o.scrollTrap || delta > 0 && pos.dest < pos.end || delta < 0 && pos.dest > pos.start) {
 				stopDefault(event, 1);
 			}
+			 
 			self.slideBy(o.scrollBy * delta);
 		}
 

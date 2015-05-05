@@ -2,7 +2,7 @@
 //enqueue scripts and styles *use production assets. Dev assets are located in assets/css and assets/js
 function loadup_scripts() {
     wp_enqueue_script('imgwait-js', get_template_directory_uri().'/assets/libs/waitforimages.min.js',array( 'jquery' ), null, true);
-    wp_enqueue_script('sly-js', get_template_directory_uri().'/assets/libs/sly.js',array( 'jquery' ), null, true);
+    wp_enqueue_script('sly-js', get_template_directory_uri().'/assets/libs/sly-dev.js',array( 'jquery' ), null, true);
     wp_enqueue_script('theme-js', get_template_directory_uri().'/assets/js/pamela_hanson.js',array( 'jquery' ), null, true);
  
 }

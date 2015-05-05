@@ -48,14 +48,11 @@
     if (have_posts()) : while(have_posts()) : $i++; if(($i % 2) !== 0) : $wp_query->next_post(); else : the_post(); ?>
     
       <?php
-      
-      while(has_sub_field('photography'))
-      { 
-        $imageArray  = get_sub_field('photo');
-        $imageAlt = $imageArray['alt'];
-        $imageURL = $imageArray['sizes']['single-photo'];
-        break;
-      }
+ 
+          $imageArray  = get_field('thumbnail_image');
+          $imageAlt = $imageArray['alt'];
+          $imageURL = $imageArray['sizes']['grid-photo'];
+ 
 
 
       ?>
