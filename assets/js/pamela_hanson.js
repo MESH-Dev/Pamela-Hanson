@@ -169,19 +169,34 @@ jQuery(document).ready(function($){
                   is_loading = false;
                 }
             });
-        }    
+        }  
  
   }
  
   $('a#load-more-videos').click(loadVideos);
-   
+
+
+
+  //Masonry and infinite scroll
+
+  // Main content container
+  var $container = $('.fluid-category');
+
+  // Masonry + ImagesLoaded
+  $container.waitForImages(function(){
+    $container.masonry({
+      // selector for entry content
+      itemSelector: '.item',
+     
+      columnWidth: function( containerWidth ) {
+        return containerWidth / 2;
+      }
+    });
+  });
+
  
  
-
-
-
-
- 
-
 
 })(jQuery);
+ 
+

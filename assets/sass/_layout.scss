@@ -894,8 +894,9 @@ iframe{
 }
 .fluid-category{
   width: 88%;
-  padding: 0 6% 0 6%;
-  margin: 0;
+  margin-left: 7%;
+  margin-right: 5%;
+  padding: 0;
    position: relative; 
    @include breakpoint(portrait){
      width: 300px; 
@@ -903,15 +904,13 @@ iframe{
   }
 }
 
-.one-half{
-  width: 47%;
-  padding-right: 6%;
+.item{
+  display: block;
+  width: 48%;
+  margin:0;
   float: left;
   text-align: left;
-
-  &.last{
-    padding-right: 0%;
-  }
+ 
 
   @include breakpoint(portrait){
      width: 300px; 

@@ -14,60 +14,30 @@
    
     query_posts($query_string . '&posts_per_page=-10' );
     ?>
-    <div class="one-half">
+ 
     <?php 
     $i= 0;
     //LEFT COLUMN
-    if (have_posts()) : while(have_posts()) : $i++; if(($i % 2) == 0) : $wp_query->next_post(); else : the_post(); ?>
+    if (have_posts()) : while(have_posts()) : the_post(); ?>
       
         <?php
           $imageArray  = get_field('thumbnail_image');
           $imageAlt = $imageArray['alt'];
-          $imageURL = $imageArray['sizes']['grid-photo'];
+          $imageURL = $imageArray['sizes']['single-photo'];
         ?>
          
-        <a href="<?php the_permalink();?>" class="single-cat-photo" title="<?php echo get_the_title(); ?>">
-          <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageAlt; ?>">
-          <h2 class="project-title"><?php the_title(); ?></h2>
-          <span class="project-desc"><?php the_field('project_information'); ?></span>
-        </a>
+        <div class="item"> 
+          <a href="<?php the_permalink();?>" class="single-cat-photo" title="<?php echo get_the_title(); ?>">
+            <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageAlt; ?>">
+            <h2 class="project-title"><?php the_title(); ?></h2>
+            <span class="project-desc"><?php the_field('project_information'); ?></span>
+          </a>
+        </div>
       
 
 
-    <?php 
+    <?php endwhile;  endif; ?>
  
-    endif; endwhile;  endif; ?>
-
-    </div>
-
-    <?php $i = 0; rewind_posts(); ?>
-    <div class="one-half last">
-
-     <?php 
-    //RIGHT COLUMN
-    if (have_posts()) : while(have_posts()) : $i++; if(($i % 2) !== 0) : $wp_query->next_post(); else : the_post(); ?>
-    
-      <?php
- 
-          $imageArray  = get_field('thumbnail_image');
-          $imageAlt = $imageArray['alt'];
-          $imageURL = $imageArray['sizes']['grid-photo'];
- 
-
-
-      ?>
-       
-      <a href="<?php the_permalink();?>" class="single-cat-photo" title="<?php echo get_the_title(); ?>">
-        <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageAlt; ?>">
-        <h2 class="project-title"><?php the_title(); ?></h2>
-        <span class="project-desc"><?php the_field('project_information'); ?></span>
-      </a>
-   
-
-      <?php endif; endwhile;  endif; ?>
-
-    </div> 
-    
 
 </div>
 <br class="clear" /> 

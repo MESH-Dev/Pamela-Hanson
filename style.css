@@ -2279,8 +2279,9 @@ iframe {
 /* line 895, assets/sass/_layout.scss */
 .fluid-category {
   width: 88%;
-  padding: 0 6% 0 6%;
-  margin: 0;
+  margin-left: 7%;
+  margin-right: 5%;
+  padding: 0;
   position: relative;
 }
 @media only screen and (max-width: 479px) {
@@ -2292,58 +2293,55 @@ iframe {
   }
 }
 
-/* line 906, assets/sass/_layout.scss */
-.one-half {
-  width: 47%;
-  padding-right: 6%;
+/* line 907, assets/sass/_layout.scss */
+.item {
+  display: block;
+  width: 48%;
+  margin: 0;
   float: left;
   text-align: left;
 }
-/* line 912, assets/sass/_layout.scss */
-.one-half.last {
-  padding-right: 0%;
-}
 @media only screen and (max-width: 479px) {
-  /* line 906, assets/sass/_layout.scss */
-  .one-half {
+  /* line 907, assets/sass/_layout.scss */
+  .item {
     width: 300px;
   }
 }
-/* line 920, assets/sass/_layout.scss */
-.one-half img {
+/* line 919, assets/sass/_layout.scss */
+.item img {
   width: 100%;
   height: auto;
 }
-/* line 924, assets/sass/_layout.scss */
-.one-half a {
+/* line 923, assets/sass/_layout.scss */
+.item a {
   text-decoration: none;
   margin-bottom: 60px;
   display: block;
 }
+/* line 927, assets/sass/_layout.scss */
+.item a:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+}
 /* line 928, assets/sass/_layout.scss */
-.one-half a:hover {
+.item a:hover h2 {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 929, assets/sass/_layout.scss */
-.one-half a:hover h2 {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
-  opacity: 0.5;
-}
-/* line 933, assets/sass/_layout.scss */
-.one-half h2.project-title {
+/* line 932, assets/sass/_layout.scss */
+.item h2.project-title {
   font-size: 18px;
   line-height: 22px;
   padding: 10px 0 3px 0;
 }
 @media only screen and (max-width: 767px) {
-  /* line 933, assets/sass/_layout.scss */
-  .one-half h2.project-title {
+  /* line 932, assets/sass/_layout.scss */
+  .item h2.project-title {
     font-size: 18px;
   }
 }
-/* line 942, assets/sass/_layout.scss */
-.one-half span.project-desc {
+/* line 941, assets/sass/_layout.scss */
+.item span.project-desc {
   color: #7f7f7f;
   font-size: 14px;
   text-transform: uppercase;
@@ -2351,20 +2349,20 @@ iframe {
 
 /* FOOTER Styles
 ================================================== */
-/* line 956, assets/sass/_layout.scss */
+/* line 955, assets/sass/_layout.scss */
 .mesh {
   font-size: 12px;
   text-align: right;
   padding-bottom: 10px;
 }
 
-/* line 962, assets/sass/_layout.scss */
+/* line 961, assets/sass/_layout.scss */
 .one_half {
   width: 47% !important;
   padding-right: 3%;
 }
 
-/* line 966, assets/sass/_layout.scss */
+/* line 965, assets/sass/_layout.scss */
 .one_half.last_column {
   width: 45% !important;
   padding-left: 5%;

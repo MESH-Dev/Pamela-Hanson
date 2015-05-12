@@ -3,6 +3,8 @@
 function loadup_scripts() {
     wp_enqueue_script('imgwait-js', get_template_directory_uri().'/assets/libs/waitforimages.min.js',array( 'jquery' ), null, true);
     wp_enqueue_script('sly-js', get_template_directory_uri().'/assets/libs/sly-dev.js',array( 'jquery' ), null, true);
+    wp_enqueue_script('masonry-js', get_template_directory_uri().'/assets/libs/jquery.masonry.min.js',array( 'jquery' ), null, true);
+    wp_enqueue_script('infinite-scroll-js', get_template_directory_uri().'/assets/libs/jquery.infinitescroll.min.js',array( 'jquery' ), null, true);
     wp_enqueue_script('theme-js', get_template_directory_uri().'/assets/js/pamela_hanson.js',array( 'jquery' ), null, true);
  
 }
@@ -19,7 +21,24 @@ add_image_size('single-photo', 940, 9999, false);
 add_image_size('multiple-photos', 9999, 600, false);
 
 
+ 
+add_filter( 'jpeg_quality', 'tgm_image_full_quality' );
+add_filter( 'wp_editor_set_quality', 'tgm_image_full_quality' );
+/**
+ * Filters the image quality for thumbnails to be at the highest ratio possible.
+ *
+ * Supports the new 'wp_editor_set_quality' filter added in WP 3.5.
+ *
+ * @since 1.0.0
+ *
+ * @param int $quality  The default quality (90).
+ * @return int $quality Amended quality (100).
+ */
+function tgm_image_full_quality( $quality ) {
 
+    return 100;
+
+}
 
 
 
@@ -145,9 +164,9 @@ function get_photos() {
     $the_query = new WP_Query( $args );
 
     $i= 0;
-    echo "<div class='one-half'>";
-    //LEFT COLUMN
-    if ($the_query->have_posts()) : while($the_query->have_posts()) : $i++; if(($i % 2) == 0) : $the_query->next_post(); else : $the_query->the_post();  
+ 
+ 
+    if ($the_query->have_posts()) : while($the_query->have_posts()) : $the_query->the_post();  
         while(has_sub_field('photography'))
         { 
           $imageArray  = get_sub_field('photo');
@@ -158,43 +177,15 @@ function get_photos() {
         $link = get_permalink();
         $title = get_the_title();
         $info = get_field('project_information');
- 
+    echo '<div class="item">';
     echo '<a href="' . $link   .'" class="single-cat-photo" title="'. $title .'">';
     echo '      <img src="'.$imageURL .'" alt="'. $imageAlt.'">';
     echo '    <h2 class="project-title">'. $title .'</h2>';
     echo '     <span class="project-desc">'. $info .'</span>';
     echo '</a>';
-
-    endif; endwhile;  endif;   
-
     echo "</div>";
 
-    $i = 0;  rewind_posts();  
-    echo '<div class="one-half last">';
- 
-    //RIGHT COLUMN
-    if ($the_query->have_posts()) : while($the_query->have_posts()) : $i++; if(($i % 2) !== 0) : $the_query->next_post(); else : $the_query->the_post();  
-        while(has_sub_field('photography'))
-        { 
-          $imageArray  = get_sub_field('photo');
-          $imageAlt = $imageArray['alt'];
-          $imageURL = $imageArray['sizes']['single-photo'];
-          break;
-        }
-        $link = get_permalink();
-        $title = get_the_title();
-        $info = get_field('project_information');
- 
-    echo '<a href="' . $link   .'" class="single-cat-photo" title="'. $title .'">';
-    echo '      <img src="'.$imageURL .'" alt="'. $imageAlt.'">';
-    echo '    <h2 class="project-title">'. $title .'</h2>';
-    echo '     <span class="project-desc">'. $info .'</span>';
-    echo '</a>';
-   
-
-    endif; endwhile;  endif;  
-
-    echo "</div>";
+    endwhile;  endif;   
  
     die();
 }
@@ -223,9 +214,9 @@ function get_videos() {
     $the_query = new WP_Query( $args );
 
     $i= 0;
-    echo "<div class='one-half'>";
+
     //LEFT COLUMN
-    if ($the_query->have_posts()) : while($the_query->have_posts()) : $i++; if(($i % 2) == 0) : $the_query->next_post(); else : $the_query->the_post();  
+    if ($the_query->have_posts()) : while($the_query->have_posts()) : $the_query->the_post();  
  
         $imageArray  = get_field('thumbnail_image');
         $imageAlt = $imageArray['alt'];
@@ -234,39 +225,17 @@ function get_videos() {
         $link = get_permalink();
         $title = get_the_title();
         $info = get_field('project_information');
- 
+
+    echo "<div class='item'>";
     echo '<a href="' . $link   .'" class="single-cat-photo" title="'. $title .'">';
     echo '      <img src="'.$imageURL .'" alt="'. $imageAlt.'">';
     echo '    <h2 class="project-title">'. $title .'</h2>';
     echo '     <span class="project-desc">'. $info .'</span>';
     echo '</a>';
-
-    endif; endwhile;  endif;   
-
     echo "</div>";
 
-    $i = 0;  rewind_posts();  
-    echo '<div class="one-half last">';
+     endwhile;  endif;   
  
-    //RIGHT COLUMN
-    if ($the_query->have_posts()) : while($the_query->have_posts()) : $i++; if(($i % 2) !== 0) : $the_query->next_post(); else : $the_query->the_post();  
-        $imageArray  = get_field('thumbnail_image');
-        $imageAlt = $imageArray['alt'];
-        $imageURL = $imageArray['sizes']['single-photo'];
-        $link = get_permalink();
-        $title = get_the_title();
-        $info = get_field('project_information');
- 
-    echo '<a href="' . $link   .'" class="single-cat-photo" title="'. $title .'">';
-    echo '      <img src="'.$imageURL .'" alt="'. $imageAlt.'">';
-    echo '    <h2 class="project-title">'. $title .'</h2>';
-    echo '     <span class="project-desc">'. $info .'</span>';
-    echo '</a>';
-   
-
-    endif; endwhile;  endif;  
-
-    echo "</div>";
  
     die();
 }
