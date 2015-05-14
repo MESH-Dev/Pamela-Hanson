@@ -43,6 +43,16 @@
 </div>
  
  
-	
+
+<footer>
  
-<?php get_footer(); ?>
+		<div class=" mesh-footer">
+			Website by <a href="http://meshfresh.com" targer="_blank">MESH</a>
+		</div>
+ 
+</footer>
+
+<?php wp_footer(); ?>
+</body>
+
+</html>

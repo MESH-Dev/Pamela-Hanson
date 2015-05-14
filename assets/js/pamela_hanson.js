@@ -101,9 +101,9 @@ jQuery(document).ready(function($){
       var last_count = $( ".single-cat-photo" ).length;
       var category = $(".category-title h1").data("id");
       var is_loading = false;
-       if (is_loading == false) {
+       if (is_loading == false){
             is_loading = true;
-            $('a#load-more-photos').hide();
+ 
             $('#loader').show();
 
             var data = {
@@ -113,32 +113,29 @@ jQuery(document).ready(function($){
             };
             jQuery.post(ajaxurl, data, function(response) {
                 // now we have the response, so hide the loader
-                $('#loader').hide();
-                $('a#load-more-photos').show();
+                
+               //$('a#load-more-photos').show();
                 // append: add the new statments to the existing data
                 if(response != 0){
+
                   
                   $('.fluid-category').append(response);
-                  $container.masonry('reload'); 
-                  //$items = $('li', $container);
-                  //$lastTen = $items.slice(last_count, last_count+10).css('opacity', 0);
+                  $container.waitForImages(function() {
+                    $('#loader').hide();
+                    $container.masonry('reload'); 
+                  });                  
  
                   is_loading = false;
-                  var new_count = $( ".single-cat-photo" ).length;
-                  if(new_count%10 != 0){
-                    $('a#load-more-photos').hide();
-                  }
-
                 }
                 else{
-                  $('a#load-more-photos').hide();
+                  $('#loader').hide();
                   is_loading = false;
                 }
             });
         }    
   }
  
-  $('a#load-more-photos').click(loadPhotos);
+  //$('a#load-more-photos').click(loadPhotos);
 
  
 
@@ -147,14 +144,14 @@ jQuery(document).ready(function($){
   //-----------------LOAD MORE VIDEO -------------------------------------------//
 
   function loadVideos() {
-      var container = '.fluid-category',
-      $container = $(container);
-      var last_count = $( ".single-cat-photo" ).length;
+ 
+      var last_count = $( ".item" ).length;
+      
  
       var is_loading = false;
        if (is_loading == false) {
             is_loading = true;
-            $('a#load-more-videos').hide();
+            
             $('#loader').show();
 
             var data = {
@@ -162,44 +159,46 @@ jQuery(document).ready(function($){
                 last_count: last_count
             };
             jQuery.post(ajaxurl, data, function(response) {
-                // now we have the response, so hide the loader
-                $('#loader').hide();
-                $('a#load-more-videos').show();
+ 
+                
                 // append: add the new statments to the existing data
                 if(response != 0){
                   
                   $('.fluid-category').append(response);
-                  //$items = $('li', $container);
-                  //$lastTen = $items.slice(last_count, last_count+10).css('opacity', 0);
+                  $container.waitForImages(function() {
+                    $('#loader').hide();
+                    $container.masonry('reload'); 
+                  }); 
  
                   is_loading = false;
-                  var new_count = $( ".single-cat-photo" ).length;
-                  if(new_count%10 != 0){
-                    $('a#load-more-videos').hide();
-                  }
+ 
 
                 }
                 else{
-                  $('a#load-more-videos').hide();
+                  $('#loader').hide();
                   is_loading = false;
                 }
             });
-        }  
- 
+        } 
   }
  
-  $('a#load-more-videos').click(loadVideos);
-
-
-
  
-
+ 
+ var timeout = 0;
  $(window).scroll(function(){
+    var loc = window.location.pathname;
+    var dir = loc.substring(0, loc.lastIndexOf('/'));
+    var video = (dir.indexOf("video") > -1);
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
       if  ($(window).scrollTop() == $(document).height() - $(window).height()){
-         loadPhotos();
-         
+         if(video)
+          loadVideos();
+         else
+          loadPhotos();
       }
-  }); 
+    }, 500);
+  });
 
  
  

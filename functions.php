@@ -152,6 +152,7 @@ function get_photos() {
         return 0;
     }
 
+
     $args = array(
         'post_type' => 'photography',
         'cat' => $cat_id,
@@ -162,7 +163,11 @@ function get_photos() {
 
     //query_posts( $args );
     $the_query = new WP_Query( $args );
-
+    $total = $the_query->max_num_pages *10;
+    echo $total;
+    if ($last_count > $last_count){
+        return false;
+    }
     $i= 0;
  
  
@@ -205,6 +210,7 @@ function get_videos() {
 
     $args = array(
         'post_type' => 'video',
+        'post_status' => 'publish',
         'posts_per_page' => 10,
         'offset' => $last_count
 
@@ -212,6 +218,11 @@ function get_videos() {
 
     //query_posts( $args );
     $the_query = new WP_Query( $args );
+    $total = $the_query->max_num_pages *10;
+    echo $total;
+    if ($last_count > $last_count){
+        return false;
+    }
 
     $i= 0;
 

@@ -241,6 +241,7 @@ header{
   padding-left: 15%;
   padding-right: 15%;
   outline: none;
+   -webkit-appearance: none;
   @include breakpoint(smallscreen){
        font-size: 70px;
     }
@@ -586,7 +587,8 @@ a#load-more-photos, a#load-more-videos, span#loader{
   display: block;
   position: relative; 
   margin: 0 auto; 
-  padding: 20px 0 100px 0;
+  margin-top: -30px;
+  padding: 0px 0 100px 0;
   width: 300px;
   z-index: 99;
   text-align: center;
@@ -713,7 +715,7 @@ a#load-more-photos, a#load-more-videos, span#loader{
 
 .scrollbar {    
   height: 10px; 
-  width:940px; 
+  width: 95%; 
   margin:10px auto;  
   background: #f5f5f5;  
   line-height: 0;  
@@ -811,7 +813,7 @@ iframe{
 .page-content{
   background-color: $white;
   padding: 20px 30px 20px 30px;
-  border: 2px solid $black;
+  border: 1px solid $black;
   margin-bottom: 40px;
    word-wrap: break-word;
 
@@ -821,6 +823,10 @@ iframe{
     letter-spacing: 0.04em;
     padding-bottom:19px;
     margin-left: -11px;
+    visibility: hidden;
+    display: none;
+    padding:0;
+    margin: 0;
   }
   h3{
     font-size: 14px;
@@ -957,6 +963,12 @@ iframe{
   text-align: right;
   padding-bottom: 10px;
  }
+
+.mesh-footer{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+} 
 
 .one_half {
   width: 47% !important; padding-right: 3%

@@ -42,7 +42,7 @@
 </div>
 <br class="clear" /> 
 <div class="container">
-    <a id="load-more-videos">LOAD MORE</a>
+ 
     <span id="loader" style="display:none;"><img src="<?php bloginfo('template_directory'); ?>/assets/img/ajax-loader.gif" alt="Loading"></span>
 </div>
 
